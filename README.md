@@ -15,11 +15,24 @@
 - `design-01.jpg`
 - `design-02.jpg`
 - `design-03.jpg`
-- `contact.jpg`
 
 다른 파일명이나 외부 이미지 주소를 사용하려면 `index.html`의
 `data-image="./assets/images/..."` 값만 변경하면 됩니다.
 
-프로젝트 카드의 상세 페이지 링크는 각 카드의 `href="#"` 값을 원하는 주소로
-교체하면 됩니다.
+## 프로젝트 영상 팝업
+
+프로젝트 썸네일을 클릭하면 영상과 프로젝트 설명이 담긴 팝업이 열립니다.
+영상 파일은 `assets/videos` 폴더에 아래 이름으로 넣으면 됩니다.
+
+- `project-01.mp4`
+- `project-02.mp4`
+- `project-03.mp4`
+
+각 프로젝트의 제목, 분류, 영상 경로, 설명, 담당 업무와 기여 내용은
+`index.html`의 `data-project`가 붙은 `<article>` 안에서 수정할 수 있습니다.
+
+## 이력서 PDF
+
+Contact의 원형 버튼을 클릭하면 이력서가 다운로드됩니다.
+PDF 파일을 `assets/documents/resume.pdf` 경로에 넣으면 됩니다.
 # portfolio2

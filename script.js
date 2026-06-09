@@ -60,3 +60,69 @@ document.querySelectorAll("[data-slider]").forEach((button) => {
     });
   });
 });
+
+const projectModal = document.querySelector(".project-modal");
+const modalDialog = projectModal.querySelector(".modal-dialog");
+const modalVideo = projectModal.querySelector("video");
+const videoPlaceholder = projectModal.querySelector(".video-placeholder");
+const modalTitle = projectModal.querySelector("#modal-title");
+const modalMeta = projectModal.querySelector(".modal-meta");
+const modalDescription = projectModal.querySelector("[data-modal-description]");
+const modalRole = projectModal.querySelector("[data-modal-role]");
+const modalContribution = projectModal.querySelector("[data-modal-contribution]");
+let lastFocusedElement = null;
+
+function openProjectModal(project) {
+  const { title, category, year, video, description, role, contribution } = project.dataset;
+
+  lastFocusedElement = document.activeElement;
+  modalTitle.textContent = title;
+  modalMeta.textContent = `${category} · ${year}`;
+  modalDescription.textContent = description;
+  modalRole.textContent = role;
+  modalContribution.textContent = contribution;
+
+  if (video) {
+    modalVideo.src = video;
+    videoPlaceholder.hidden = true;
+  } else {
+    modalVideo.removeAttribute("src");
+    videoPlaceholder.hidden = false;
+  }
+
+  projectModal.classList.add("is-open");
+  projectModal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+  modalDialog.focus();
+}
+
+function closeProjectModal() {
+  projectModal.classList.remove("is-open");
+  projectModal.setAttribute("aria-hidden", "true");
+  modalVideo.pause();
+  modalVideo.removeAttribute("src");
+  modalVideo.load();
+  document.body.style.overflow = "";
+  lastFocusedElement?.focus();
+}
+
+modalVideo.addEventListener("error", () => {
+  modalVideo.removeAttribute("src");
+  videoPlaceholder.hidden = false;
+});
+
+document.querySelectorAll("[data-project]").forEach((project) => {
+  project.querySelector(".project-open").addEventListener("click", () => {
+    openProjectModal(project);
+  });
+});
+
+projectModal.querySelectorAll("[data-modal-close]").forEach((button) => {
+  button.addEventListener("click", closeProjectModal);
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && projectModal.classList.contains("is-open")) {
+    closeProjectModal();
+  }
+});

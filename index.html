@@ -8,7 +8,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500&family=Playfair+Display:ital,wght@0,500;1,500&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600&family=Noto+Serif+KR:wght@400;500;600&display=swap"
             rel="stylesheet"
         />
         <link rel="stylesheet" href="./styles.css" />
@@ -78,11 +78,11 @@
                             <dl class="profile-list">
                                 <div>
                                     <dt>Name</dt>
-                                    <dd>Your Name</dd>
+                                    <dd>최영민</dd>
                                 </div>
                                 <div>
                                     <dt>Based in</dt>
-                                    <dd>Seoul, Korea</dd>
+                                    <dd>Daegu, Korea</dd>
                                 </div>
                                 <div>
                                     <dt>Focus</dt>
@@ -170,7 +170,7 @@
                     <div class="section-heading row-heading reveal">
                         <div>
                             <p class="section-number">04</p>
-                            <h2>Selected Project</h2>
+                            <h2>Project</h2>
                         </div>
                         <div class="slider-controls">
                             <button type="button" data-slider="projects" data-direction="-1" aria-label="이전 프로젝트">
@@ -182,30 +182,81 @@
                         </div>
                     </div>
                     <div class="card-track" data-track="projects">
-                        <article class="project-card reveal">
-                            <a class="card-image image-slot" href="#" data-image="./assets/images/project-01.jpg"
-                                ><span class="image-label">Project 01</span><span class="card-arrow">↗</span></a
+                        <article
+                            class="project-card reveal"
+                            data-project
+                            data-title="Quiet Momentum"
+                            data-category="Brand Film · Editing"
+                            data-year="2026"
+                            data-video="./assets/videos/project-01.mp4"
+                            data-description="브랜드가 가진 차분한 에너지와 성장의 순간을 리듬감 있는 편집으로 담아낸 브랜드 필름입니다."
+                            data-role="영상 편집, 색보정, 사운드 디자인"
+                            data-contribution="전체 영상의 편집 방향을 설계하고 촬영본 셀렉부터 최종 마스터 출력까지 담당했습니다."
+                        >
+                            <button
+                                class="card-image image-slot project-open"
+                                type="button"
+                                data-image="./assets/images/project-01.jpg"
+                                aria-label="Quiet Momentum 프로젝트 상세 보기"
                             >
+                                <span class="image-label">Project 01 Thumbnail</span>
+                                <span class="card-arrow">↗</span>
+                                <span class="thumbnail-play">▶</span>
+                            </button>
                             <div class="card-meta">
                                 <p>Brand Film · Editing</p>
                                 <span>2026</span>
                             </div>
                             <h3>Quiet Momentum</h3>
                         </article>
-                        <article class="project-card reveal">
-                            <a class="card-image image-slot" href="#" data-image="./assets/images/project-02.jpg"
-                                ><span class="image-label">Project 02</span><span class="card-arrow">↗</span></a
+                        <article
+                            class="project-card reveal"
+                            data-project
+                            data-title="Shape of Summer"
+                            data-category="Campaign · Motion"
+                            data-year="2025"
+                            data-video="./assets/videos/project-02.mp4"
+                            data-description="여름 캠페인의 밝고 경쾌한 인상을 그래픽 모션과 빠른 장면 전환으로 표현한 프로모션 영상입니다."
+                            data-role="모션 그래픽, 타이포그래피 애니메이션"
+                            data-contribution="키 비주얼을 영상 문법으로 확장하고 모션 스타일 프레임과 주요 전환 효과를 제작했습니다."
+                        >
+                            <button
+                                class="card-image image-slot project-open"
+                                type="button"
+                                data-image="./assets/images/project-02.jpg"
+                                aria-label="Shape of Summer 프로젝트 상세 보기"
                             >
+                                <span class="image-label">Project 02 Thumbnail</span>
+                                <span class="card-arrow">↗</span>
+                                <span class="thumbnail-play">▶</span>
+                            </button>
                             <div class="card-meta">
                                 <p>Campaign · Motion</p>
                                 <span>2025</span>
                             </div>
                             <h3>Shape of Summer</h3>
                         </article>
-                        <article class="project-card reveal">
-                            <a class="card-image image-slot" href="#" data-image="./assets/images/project-03.jpg"
-                                ><span class="image-label">Project 03</span><span class="card-arrow">↗</span></a
+                        <article
+                            class="project-card reveal"
+                            data-project
+                            data-title="Everyday Rhythm"
+                            data-category="Short-form · Direction"
+                            data-year="2025"
+                            data-video="./assets/videos/project-03.mp4"
+                            data-description="일상의 짧은 순간을 감각적인 호흡으로 연결한 소셜 미디어용 숏폼 콘텐츠 시리즈입니다."
+                            data-role="기획, 연출, 편집"
+                            data-contribution="콘텐츠 콘셉트와 숏 리스트를 구성하고 현장 디렉팅과 플랫폼별 버전 편집을 진행했습니다."
+                        >
+                            <button
+                                class="card-image image-slot project-open"
+                                type="button"
+                                data-image="./assets/images/project-03.jpg"
+                                aria-label="Everyday Rhythm 프로젝트 상세 보기"
                             >
+                                <span class="image-label">Project 03 Thumbnail</span>
+                                <span class="card-arrow">↗</span>
+                                <span class="thumbnail-play">▶</span>
+                            </button>
                             <div class="card-meta">
                                 <p>Short-form · Direction</p>
                                 <span>2025</span>
@@ -267,28 +318,61 @@
                             <p>새로운 프로젝트와 재미있는 협업 이야기를 기다리고 있습니다.</p>
                         </div>
                         <div class="contact-links reveal">
-                            <a href="mailto:hello@example.com"><span>Email</span>hello@example.com</a>
-                            <a href="tel:+821012345678"><span>Phone</span>+82 10 1234 5678</a>
+                            <a href="mailto:cgy0603@naver.com"><span>Email</span>cgy0603@naver.com</a>
+                            <a href="tel:+821053526673"><span>Phone</span>+82 10 5352 6673</a>
                             <a href="https://www.instagram.com/" target="_blank" rel="noreferrer"
-                                ><span>Instagram</span>@your.account</a
+                                ><span>Instagram</span>@0_minssi</a
                             >
                         </div>
-                        <div
-                            class="contact-art image-slot reveal"
-                            data-image="./assets/images/contact.jpg"
-                            role="img"
-                            aria-label="연락처 섹션 이미지"
+                        <a
+                            class="resume-download reveal"
+                            href="./assets/documents/resume.pdf"
+                            download="resume.pdf"
+                            aria-label="이력서 PDF 다운로드"
                         >
-                            <span class="image-label">Contact image<br />800 × 800</span>
-                        </div>
+                            <span>Resume</span>
+                            <strong>PDF Download</strong>
+                            <i aria-hidden="true">↓</i>
+                        </a>
                     </div>
                 </div>
             </section>
         </main>
 
+        <div class="project-modal" aria-hidden="true">
+            <div class="modal-backdrop" data-modal-close></div>
+            <section class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
+                <button class="modal-close" type="button" data-modal-close aria-label="프로젝트 상세 닫기">×</button>
+                <div class="modal-video">
+                    <video controls playsinline preload="metadata"></video>
+                    <p class="video-placeholder">영상 파일을 연결해 주세요.</p>
+                </div>
+                <div class="modal-content">
+                    <div class="modal-heading">
+                        <p class="modal-meta"></p>
+                        <h2 id="modal-title"></h2>
+                    </div>
+                    <dl class="modal-details">
+                        <div>
+                            <dt>About</dt>
+                            <dd data-modal-description></dd>
+                        </div>
+                        <div>
+                            <dt>My Role</dt>
+                            <dd data-modal-role></dd>
+                        </div>
+                        <div>
+                            <dt>Contribution</dt>
+                            <dd data-modal-contribution></dd>
+                        </div>
+                    </dl>
+                </div>
+            </section>
+        </div>
+
         <footer>
             <div class="shell footer-inner">
-                <p>© 2026 Your Name. All rights reserved.</p>
+                <p>© 2026 Youngmin. All rights reserved.</p>
                 <a href="#home">Back to top ↑</a>
             </div>
         </footer>
