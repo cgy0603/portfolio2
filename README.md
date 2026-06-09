@@ -12,6 +12,8 @@
 - `project-01.jpg`
 - `project-02.jpg`
 - `project-03.jpg`
+- `project-04.jpg`
+- `project-05.jpg`
 - `design-01.jpg`
 - `design-02.jpg`
 - `design-03.jpg`
@@ -27,9 +29,19 @@
 - `project-01.mp4`
 - `project-02.mp4`
 - `project-03.mp4`
+- `project-04.mp4`
+- `project-05.mp4`
 
 각 프로젝트의 제목, 분류, 영상 경로, 설명, 담당 업무와 기여 내용은
 `index.html`의 `data-project`가 붙은 `<article>` 안에서 수정할 수 있습니다.
+
+## 디자인 상세 팝업
+
+Design Archive 카드도 클릭하면 이미지와 상세 설명이 담긴 팝업이 열립니다.
+이미지는 `assets/images/design-01.jpg`부터 `design-03.jpg`까지 연결되어 있습니다.
+
+각 디자인의 제목, 분류, 연도, 원본 이미지, 설명, 담당 업무와 기여 내용은
+`index.html`의 `data-design`이 붙은 `<article>` 안에서 수정할 수 있습니다.
 
 ## 이력서 PDF
 

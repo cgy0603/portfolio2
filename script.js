@@ -47,24 +47,42 @@ const observer = new IntersectionObserver(
 
 document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
 
-document.querySelectorAll("[data-slider]").forEach((button) => {
-  button.addEventListener("click", () => {
-    const track = document.querySelector(`[data-track="${button.dataset.slider}"]`);
-    const direction = Number(button.dataset.direction);
-    const card = track.firstElementChild;
-    const gap = Number.parseFloat(getComputedStyle(track).gap) || 0;
+document.querySelectorAll("[data-track]").forEach((track) => {
+  const sliderName = track.dataset.track;
+  const buttons = [...document.querySelectorAll(`[data-slider="${sliderName}"]`)];
 
-    track.scrollBy({
-      left: direction * (card.getBoundingClientRect().width + gap),
-      behavior: "smooth",
+  function updateSliderButtons() {
+    const maxScroll = track.scrollWidth - track.clientWidth;
+
+    buttons.forEach((button) => {
+      const direction = Number(button.dataset.direction);
+      button.disabled = direction < 0 ? track.scrollLeft <= 2 : track.scrollLeft >= maxScroll - 2;
+    });
+  }
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = Number(button.dataset.direction);
+      const card = track.firstElementChild;
+      const gap = Number.parseFloat(getComputedStyle(track).gap) || 0;
+
+      track.scrollBy({
+        left: direction * (card.getBoundingClientRect().width + gap),
+        behavior: "smooth",
+      });
     });
   });
+
+  track.addEventListener("scroll", updateSliderButtons, { passive: true });
+  window.addEventListener("resize", updateSliderButtons);
+  updateSliderButtons();
 });
 
 const projectModal = document.querySelector(".project-modal");
 const modalDialog = projectModal.querySelector(".modal-dialog");
 const modalVideo = projectModal.querySelector("video");
-const videoPlaceholder = projectModal.querySelector(".video-placeholder");
+const modalImage = projectModal.querySelector("img");
+const mediaPlaceholder = projectModal.querySelector(".media-placeholder");
 const modalTitle = projectModal.querySelector("#modal-title");
 const modalMeta = projectModal.querySelector(".modal-meta");
 const modalDescription = projectModal.querySelector("[data-modal-description]");
@@ -72,8 +90,8 @@ const modalRole = projectModal.querySelector("[data-modal-role]");
 const modalContribution = projectModal.querySelector("[data-modal-contribution]");
 let lastFocusedElement = null;
 
-function openProjectModal(project) {
-  const { title, category, year, video, description, role, contribution } = project.dataset;
+function openDetailModal(item) {
+  const { title, category, year, video, modalImage: image, description, role, contribution } = item.dataset;
 
   lastFocusedElement = document.activeElement;
   modalTitle.textContent = title;
@@ -82,12 +100,19 @@ function openProjectModal(project) {
   modalRole.textContent = role;
   modalContribution.textContent = contribution;
 
+  modalVideo.removeAttribute("src");
+  modalImage.removeAttribute("src");
+  modalImage.alt = "";
+
   if (video) {
     modalVideo.src = video;
-    videoPlaceholder.hidden = true;
+    mediaPlaceholder.hidden = true;
+  } else if (image) {
+    modalImage.src = image;
+    modalImage.alt = `${title} 상세 이미지`;
+    mediaPlaceholder.hidden = true;
   } else {
-    modalVideo.removeAttribute("src");
-    videoPlaceholder.hidden = false;
+    mediaPlaceholder.hidden = false;
   }
 
   projectModal.classList.add("is-open");
@@ -102,18 +127,32 @@ function closeProjectModal() {
   modalVideo.pause();
   modalVideo.removeAttribute("src");
   modalVideo.load();
+  modalImage.removeAttribute("src");
+  modalImage.alt = "";
   document.body.style.overflow = "";
   lastFocusedElement?.focus();
 }
 
 modalVideo.addEventListener("error", () => {
   modalVideo.removeAttribute("src");
-  videoPlaceholder.hidden = false;
+  mediaPlaceholder.hidden = false;
+});
+
+modalImage.addEventListener("error", () => {
+  modalImage.removeAttribute("src");
+  modalImage.alt = "";
+  mediaPlaceholder.hidden = false;
 });
 
 document.querySelectorAll("[data-project]").forEach((project) => {
   project.querySelector(".project-open").addEventListener("click", () => {
-    openProjectModal(project);
+    openDetailModal(project);
+  });
+});
+
+document.querySelectorAll("[data-design]").forEach((design) => {
+  design.querySelector(".design-open").addEventListener("click", () => {
+    openDetailModal(design);
   });
 });
 
