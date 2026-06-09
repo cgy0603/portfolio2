@@ -1,11 +1,11 @@
 :root {
-  --ink: #191817;
-  --muted: #706b68;
-  --line: rgba(25, 24, 23, 0.16);
-  --paper: #f8f4f1;
-  --blush: #efd8d4;
-  --blush-dark: #d6aaa5;
-  --white: #fffdfb;
+  --ink: #1b3a6b;
+  --muted: #58739b;
+  --line: rgba(27, 58, 107, 0.16);
+  --paper: #eaf3ff;
+  --blush: #cfe6ff;
+  --blush-dark: #5aa7ff;
+  --white: #ffffff;
   --shell: 1480px;
 }
 
@@ -45,7 +45,7 @@ button {
   z-index: 20;
   top: 0;
   width: 100%;
-  background: rgba(248, 244, 241, 0.82);
+  background: rgba(234, 243, 255, 0.86);
   border-bottom: 1px solid transparent;
   backdrop-filter: blur(18px);
   transition: border-color 0.3s;
@@ -75,7 +75,7 @@ button {
 
 .site-nav a {
   position: relative;
-  color: #3b3836;
+  color: var(--ink);
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.11em;
@@ -111,7 +111,7 @@ button {
   min-height: 940px;
   padding: 142px 0 80px;
   background:
-    radial-gradient(circle at 22% 28%, rgba(239, 216, 212, 0.72), transparent 28%),
+    radial-gradient(circle at 22% 28%, rgba(207, 230, 255, 0.9), transparent 30%),
     var(--paper);
 }
 
@@ -209,7 +209,7 @@ h1 span {
   z-index: 1;
   top: 50%;
   left: 50%;
-  color: rgba(25, 24, 23, 0.55);
+  color: rgba(27, 58, 107, 0.62);
   font-size: 10px;
   letter-spacing: 0.12em;
   line-height: 1.7;
@@ -238,7 +238,7 @@ h1 span {
   place-items: center;
   padding-left: 3px;
   color: var(--white);
-  background: rgba(25, 24, 23, 0.8);
+  background: rgba(27, 58, 107, 0.88);
   border-radius: 50%;
   font-size: 12px;
 }
@@ -336,7 +336,7 @@ h1 span {
 }
 
 .skills {
-  background: #f3e4e1;
+  background: var(--blush);
 }
 
 .skill-list {
@@ -373,7 +373,7 @@ h1 span {
 .skill-bar {
   height: 3px;
   overflow: hidden;
-  background: rgba(25, 24, 23, 0.1);
+  background: rgba(27, 58, 107, 0.12);
 }
 
 .skill-bar i {
@@ -529,7 +529,7 @@ h1 span {
 }
 
 .design {
-  background: #eee7e2;
+  background: #dcecff;
 }
 
 .design-card {
