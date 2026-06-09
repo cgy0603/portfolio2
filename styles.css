@@ -317,61 +317,146 @@ h1 span {
   background: var(--blush);
 }
 
-.skill-list {
+.skill-groups {
   width: calc(100% - 120px);
   margin-left: 120px;
   border-top: 1px solid var(--line);
 }
 
-.skill-row {
+.skill-group {
   display: grid;
-  grid-template-columns: 58px 1fr 60px;
-  gap: 28px;
+  grid-template-columns: minmax(340px, 0.9fr) minmax(460px, 1.1fr);
+  gap: 70px;
   align-items: center;
-  padding: 25px 0;
+  min-height: 190px;
+  padding: 36px 0;
   border-bottom: 1px solid var(--line);
 }
 
-.skill-icon {
-  width: 36px;
-  height: 36px;
+.skill-copy {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 24px;
+}
+
+.skill-index {
+  margin: 5px 0 0;
+  color: var(--blush-dark);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+.skill-copy h3 {
+  margin-bottom: 15px;
+  font-family: var(--font-design);
+  font-size: clamp(24px, 2vw, 32px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.skill-copy div > p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.9;
+  word-break: keep-all;
+}
+
+.tool-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  align-items: flex-start;
+}
+
+.tool-item {
+  width: 92px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.tool-icon {
+  width: 58px;
+  height: 58px;
   display: grid;
   place-items: center;
-  border: 1px solid var(--ink);
-  font-size: 11px;
-  font-weight: 600;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(27, 58, 107, 0.28);
+  border-radius: 16px;
+  transition:
+    color 0.25s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
 }
 
-.skill-row h3 {
-  margin-bottom: 12px;
-  font-size: 13px;
-  font-weight: 500;
-}
-
-.skill-bar {
-  height: 3px;
-  overflow: hidden;
-  background: rgba(27, 58, 107, 0.12);
-}
-
-.skill-bar i {
-  display: block;
-  width: var(--level);
-  height: 100%;
+.tool-item:hover .tool-icon {
+  color: var(--white);
   background: var(--blush-dark);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+  border-color: var(--blush-dark);
+  transform: translateY(-4px);
 }
 
-.skill-row.is-visible .skill-bar i {
-  transform: scaleX(1);
+.adobe-icon {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.06em;
 }
 
-.skill-row strong {
-  font-size: 12px;
-  font-weight: 500;
-  text-align: right;
+.ai-icon svg {
+  width: 36px;
+  height: 36px;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.65;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.chatgpt-mark img {
+  width: 42px;
+  height: 42px;
+  display: block;
+  object-fit: contain;
+  transition: filter 0.25s ease;
+}
+
+.tool-item:hover .chatgpt-mark img {
+  filter: brightness(0) invert(1);
+}
+
+.gemini-mark svg {
+  width: 32px;
+  height: 32px;
+}
+
+.gemini-mark svg path {
+  fill: currentColor;
+  stroke: none;
+}
+
+.kling-mark img {
+  width: 43px;
+  height: 43px;
+  display: block;
+  object-fit: contain;
+  transition: filter 0.25s ease;
+}
+
+.tool-item:hover .kling-mark img {
+  filter: brightness(0) invert(1);
 }
 
 .summary {
@@ -457,7 +542,8 @@ h1 span {
   grid-auto-flow: column;
   grid-auto-columns: calc((100% - 48px) / 3);
   gap: 24px;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
   overscroll-behavior-inline: contain;
   scroll-snap-type: inline mandatory;
   scrollbar-width: none;
@@ -482,12 +568,15 @@ h1 span {
   color: inherit;
   border: 0;
   cursor: pointer;
-  transition: transform 0.35s ease;
+  transition:
+    filter 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .project-card:hover .card-image,
 .design-card:hover .design-image {
-  transform: translateY(-6px);
+  filter: brightness(0.97);
+  box-shadow: 0 14px 30px rgba(27, 58, 107, 0.12);
 }
 
 .thumbnail-play {
@@ -713,7 +802,18 @@ h1 span {
   display: block;
   height: 320px;
   margin-bottom: 22px;
-  transition: transform 0.35s ease;
+  background-color: var(--blush-dark);
+  transition:
+    filter 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.design-image .image-label {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.design-image::before {
+  border-color: rgba(255, 255, 255, 0.55);
 }
 
 .design-open strong {
@@ -731,9 +831,9 @@ h1 span {
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1.1fr 0.75fr;
-  gap: 80px;
-  align-items: end;
+  grid-template-columns: 0.9fr 1.25fr 330px;
+  gap: clamp(40px, 5vw, 90px);
+  align-items: center;
 }
 
 .contact-lead {
@@ -752,21 +852,52 @@ h1 span {
 }
 
 .contact-links a {
-  display: grid;
-  grid-template-columns: 110px 1fr;
-  padding: 22px 0;
+  position: relative;
+  display: flex;
+  min-height: 118px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px 58px 24px 28px;
   border-top: 1px solid var(--line);
   font-family: var(--font-main);
-  font-size: 18px;
+  font-size: clamp(18px, 1.55vw, 24px);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  overflow-wrap: anywhere;
+  transition:
+    color 0.25s ease,
+    padding-left 0.25s ease;
 }
 
 .contact-links a:last-child {
   border-bottom: 1px solid var(--line);
 }
 
+.contact-links a::after {
+  content: "↗";
+  position: absolute;
+  right: 24px;
+  color: var(--blush-dark);
+  font-size: 17px;
+  transition: transform 0.25s ease;
+}
+
+.contact-links a:hover,
+.contact-links a:focus-visible {
+  color: var(--blush-dark);
+  padding-left: 36px;
+}
+
+.contact-links a:hover::after,
+.contact-links a:focus-visible::after {
+  transform: translate(4px, -4px);
+}
+
 .contact-links span {
   color: var(--muted);
   font-size: 10px;
+  font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -905,6 +1036,20 @@ footer {
     gap: 40px;
   }
 
+  .skill-groups {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .skill-group {
+    grid-template-columns: minmax(250px, 0.8fr) minmax(0, 1.2fr);
+    gap: 40px;
+  }
+
+  .tool-list {
+    gap: 22px 12px;
+  }
+
   .card-image {
     height: auto;
   }
@@ -1026,9 +1171,28 @@ footer {
     height: 480px;
   }
 
-  .skill-list {
+  .skill-groups {
     width: 100%;
     margin-left: 0;
+  }
+
+  .skill-group {
+    grid-template-columns: 1fr;
+    gap: 34px;
+    padding: 42px 0;
+  }
+
+  .tool-list {
+    gap: 20px 12px;
+  }
+
+  .tool-item {
+    width: 76px;
+  }
+
+  .tool-icon {
+    width: 54px;
+    height: 54px;
   }
 
   .summary {
