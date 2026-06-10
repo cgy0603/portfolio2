@@ -616,7 +616,8 @@ h1 span {
   margin: 0;
 }
 
-.project-card h3 {
+.project-card h3,
+.design-card h3 {
   margin: 10px 0 0;
   font-family: var(--font-design);
   font-size: 28px;
@@ -787,20 +788,15 @@ h1 span {
 
 .design-open {
   width: 100%;
-  display: flex;
-  flex-direction: column;
   padding: 0;
   color: inherit;
-  background: transparent;
   border: 0;
-  text-align: left;
   cursor: pointer;
 }
 
 .design-image {
   display: block;
   height: 320px;
-  margin-bottom: 22px;
   background-color: var(--blush-dark);
   transition:
     filter 0.3s ease,
@@ -813,19 +809,6 @@ h1 span {
 
 .design-image::before {
   border-color: rgba(255, 255, 255, 0.55);
-}
-
-.design-open strong {
-  font-size: 15px;
-  font-weight: 500;
-}
-
-.design-open small {
-  margin-top: 6px;
-  color: var(--muted);
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
 }
 
 .contact-grid {
