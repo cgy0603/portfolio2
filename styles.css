@@ -74,7 +74,6 @@ button {
   display: flex;
   gap: 36px;
 }
-
 .site-nav a {
   position: relative;
   color: var(--ink);
