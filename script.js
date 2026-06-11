@@ -1,3 +1,10 @@
+const mainContent = document.querySelector("main");
+const projectsSection = document.querySelector("#project");
+const aboutSection = document.querySelector("#about");
+
+// Place the strongest evidence of ability directly after the introduction.
+mainContent.insertBefore(projectsSection, aboutSection);
+
 const header = document.querySelector(".site-header");
 const menuButton = document.querySelector(".menu-toggle");
 const navigation = document.querySelector(".site-nav");
