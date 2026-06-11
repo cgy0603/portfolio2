@@ -706,6 +706,14 @@ h1 span {
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.modal-dialog[data-media-orientation="portrait"] {
+  width: min(680px, 100%);
+}
+
+.modal-dialog[data-media-orientation="square"] {
+  width: min(820px, 100%);
+}
+
 .project-modal.is-open .modal-dialog {
   transform: translateY(0) scale(1);
 }
@@ -731,12 +739,22 @@ h1 span {
 
 .modal-media {
   position: relative;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: var(--media-ratio, 16 / 9);
   display: grid;
   place-items: center;
   overflow: hidden;
   color: var(--ink);
   background: var(--blush);
+}
+
+.modal-dialog[data-media-orientation="portrait"] .modal-media {
+  width: min(430px, 100%);
+  margin-inline: auto;
+}
+
+.modal-dialog[data-media-orientation="square"] .modal-media {
+  width: min(620px, 100%);
+  margin-inline: auto;
 }
 
 .modal-media video,

@@ -87,6 +87,7 @@ document.querySelectorAll("[data-track]").forEach((track) => {
 
 const projectModal = document.querySelector(".project-modal");
 const modalDialog = projectModal.querySelector(".modal-dialog");
+const modalMedia = projectModal.querySelector(".modal-media");
 const modalVideo = projectModal.querySelector("video");
 const modalImage = projectModal.querySelector("img");
 const mediaPlaceholder = projectModal.querySelector(".media-placeholder");
@@ -97,10 +98,24 @@ const modalRole = projectModal.querySelector("[data-modal-role]");
 const modalContribution = projectModal.querySelector("[data-modal-contribution]");
 let lastFocusedElement = null;
 
+function updateModalMediaLayout(width = 16, height = 9) {
+  if (!width || !height) {
+    width = 16;
+    height = 9;
+  }
+
+  const ratioDifference = Math.abs(width - height) / Math.max(width, height);
+  const orientation = ratioDifference < 0.08 ? "square" : height > width ? "portrait" : "landscape";
+
+  modalDialog.dataset.mediaOrientation = orientation;
+  modalMedia.style.setProperty("--media-ratio", `${width} / ${height}`);
+}
+
 function openDetailModal(item) {
   const { title, category, year, video, modalImage: image, description, role, contribution } = item.dataset;
 
   lastFocusedElement = document.activeElement;
+  updateModalMediaLayout();
   modalTitle.textContent = title;
   modalMeta.textContent = `${category} · ${year}`;
   modalDescription.textContent = description;
@@ -136,13 +151,22 @@ function closeProjectModal() {
   modalVideo.load();
   modalImage.removeAttribute("src");
   modalImage.alt = "";
+  updateModalMediaLayout();
   document.body.style.overflow = "";
   lastFocusedElement?.focus();
 }
 
+modalVideo.addEventListener("loadedmetadata", () => {
+  updateModalMediaLayout(modalVideo.videoWidth, modalVideo.videoHeight);
+});
+
 modalVideo.addEventListener("error", () => {
   modalVideo.removeAttribute("src");
   mediaPlaceholder.hidden = false;
+});
+
+modalImage.addEventListener("load", () => {
+  updateModalMediaLayout(modalImage.naturalWidth, modalImage.naturalHeight);
 });
 
 modalImage.addEventListener("error", () => {
