@@ -659,7 +659,6 @@ h1 span {
   margin-inline: auto;
 }
 
-.modal-media video,
 .modal-media iframe,
 .modal-media img {
   width: 100%;
@@ -669,7 +668,6 @@ h1 span {
   object-fit: contain;
 }
 
-.modal-media video,
 .modal-media iframe {
   background: #10294f;
 }
@@ -678,7 +676,6 @@ h1 span {
   background: var(--paper);
 }
 
-.modal-media video:not([src]),
 .modal-media iframe:not([src]),
 .modal-media img:not([src]) {
   display: none;

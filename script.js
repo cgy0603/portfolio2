@@ -56,13 +56,19 @@ document.querySelectorAll("[data-image]").forEach((element) => {
     const orientation = getMediaOrientation(image.naturalWidth, image.naturalHeight);
 
     element.dataset.imageOrientation = orientation;
-    element.dataset.mediaOrientation = orientation;
     element.classList.add("has-image");
 
     const project = element.closest("[data-project]");
     if (project) {
       project.dataset.thumbnailWidth = String(image.naturalWidth);
       project.dataset.thumbnailHeight = String(image.naturalHeight);
+
+      const youtubeMedia = getYouTubeMedia(project.dataset.youtube);
+      element.dataset.mediaOrientation = youtubeMedia
+        ? getMediaOrientation(youtubeMedia.width, youtubeMedia.height)
+        : orientation;
+    } else {
+      element.dataset.mediaOrientation = orientation;
     }
   });
   image.src = imagePath;
@@ -116,7 +122,6 @@ document.querySelectorAll("[data-track]").forEach((track) => {
 const projectModal = document.querySelector(".project-modal");
 const modalDialog = projectModal.querySelector(".modal-dialog");
 const modalMedia = projectModal.querySelector(".modal-media");
-const modalVideo = projectModal.querySelector("video");
 const modalEmbed = projectModal.querySelector("iframe");
 const modalImage = projectModal.querySelector("img");
 const mediaPlaceholder = projectModal.querySelector(".media-placeholder");
@@ -127,7 +132,6 @@ const modalRole = projectModal.querySelector("[data-modal-role]");
 const modalContribution = projectModal.querySelector("[data-modal-contribution]");
 let lastFocusedElement = null;
 let currentModalItem = null;
-const videoMetadataCache = new Map();
 
 function updateModalMediaLayout(width = 16, height = 9) {
   if (!width || !height) {
@@ -150,88 +154,49 @@ function updateModalMediaLayout(width = 16, height = 9) {
   }
 }
 
-function loadVideoMetadata(source) {
+function getYouTubeMedia(source) {
   if (!source) {
-    return Promise.resolve(null);
-  }
-
-  if (videoMetadataCache.has(source)) {
-    return videoMetadataCache.get(source);
-  }
-
-  const metadataPromise = new Promise((resolve) => {
-    const video = document.createElement("video");
-
-    function cleanUp() {
-      video.pause();
-      video.removeAttribute("src");
-    }
-
-    video.preload = "metadata";
-    video.muted = true;
-    video.playsInline = true;
-    video.addEventListener(
-      "loadedmetadata",
-      () => {
-        const dimensions = { width: video.videoWidth, height: video.videoHeight };
-        cleanUp();
-        resolve(dimensions);
-      },
-      { once: true }
-    );
-    video.addEventListener(
-      "error",
-      () => {
-        cleanUp();
-        resolve(null);
-      },
-      { once: true }
-    );
-    video.src = source;
-  });
-
-  videoMetadataCache.set(source, metadataPromise);
-  return metadataPromise;
-}
-
-function getYouTubeVideoId(source) {
-  if (!source) {
-    return "";
+    return null;
   }
 
   try {
     const url = new URL(source);
 
     if (url.hostname === "youtu.be") {
-      return url.pathname.split("/").filter(Boolean)[0] || "";
+      const id = url.pathname.split("/").filter(Boolean)[0] || "";
+      return id ? { id, width: 16, height: 9 } : null;
     }
 
     if (url.hostname.endsWith("youtube.com")) {
       if (url.pathname === "/watch") {
-        return url.searchParams.get("v") || "";
+        const id = url.searchParams.get("v") || "";
+        return id ? { id, width: 16, height: 9 } : null;
       }
 
       const [, type, id] = url.pathname.split("/");
-      return ["shorts", "embed"].includes(type) ? id || "" : "";
+      if (!id || !["shorts", "embed"].includes(type)) {
+        return null;
+      }
+
+      return type === "shorts" ? { id, width: 9, height: 16 } : { id, width: 16, height: 9 };
     }
   } catch {
-    return source;
+    return null;
   }
 
-  return "";
+  return null;
 }
 
-async function prepareProjectMedia(project) {
-  const dimensions = await loadVideoMetadata(project.dataset.video);
-
-  if (!dimensions) {
+function prepareProjectMedia(project) {
+  const media = getYouTubeMedia(project.dataset.youtube);
+  if (!media) {
     return;
   }
 
-  updateProjectMediaData(project, dimensions.width, dimensions.height);
+  updateProjectMediaData(project, media.width, media.height);
 
   if (currentModalItem === project && projectModal.classList.contains("is-open")) {
-    updateModalMediaLayout(dimensions.width, dimensions.height);
+    updateModalMediaLayout(media.width, media.height);
   }
 }
 
@@ -240,7 +205,6 @@ function openDetailModal(item) {
     title,
     category,
     year,
-    video,
     youtube,
     modalImage: image,
     mediaWidth,
@@ -262,24 +226,20 @@ function openDetailModal(item) {
   modalRole.textContent = role;
   modalContribution.textContent = contribution;
 
-  modalVideo.removeAttribute("src");
   modalEmbed.removeAttribute("src");
   modalImage.removeAttribute("src");
   modalImage.alt = "";
 
   if (youtube) {
-    const youtubeId = getYouTubeVideoId(youtube);
+    const youtubeMedia = getYouTubeMedia(youtube);
 
-    if (youtubeId) {
-      modalEmbed.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(youtubeId)}?rel=0`;
+    if (youtubeMedia) {
+      modalEmbed.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(youtubeMedia.id)}?rel=0`;
       modalEmbed.title = `${title} 프로젝트 영상`;
       mediaPlaceholder.hidden = true;
     } else {
       mediaPlaceholder.hidden = false;
     }
-  } else if (video) {
-    modalVideo.src = video;
-    mediaPlaceholder.hidden = true;
   } else if (image) {
     modalImage.src = image;
     modalImage.alt = `${title} 상세 이미지`;
@@ -297,9 +257,6 @@ function openDetailModal(item) {
 function closeProjectModal() {
   projectModal.classList.remove("is-open");
   projectModal.setAttribute("aria-hidden", "true");
-  modalVideo.pause();
-  modalVideo.removeAttribute("src");
-  modalVideo.load();
   modalEmbed.removeAttribute("src");
   modalImage.removeAttribute("src");
   modalImage.alt = "";
@@ -308,16 +265,6 @@ function closeProjectModal() {
   document.body.style.overflow = "";
   lastFocusedElement?.focus();
 }
-
-modalVideo.addEventListener("loadedmetadata", () => {
-  updateProjectMediaData(currentModalItem, modalVideo.videoWidth, modalVideo.videoHeight);
-  updateModalMediaLayout(modalVideo.videoWidth, modalVideo.videoHeight);
-});
-
-modalVideo.addEventListener("error", () => {
-  modalVideo.removeAttribute("src");
-  mediaPlaceholder.hidden = false;
-});
 
 modalImage.addEventListener("load", () => {
   updateModalMediaLayout(modalImage.naturalWidth, modalImage.naturalHeight);
@@ -332,10 +279,8 @@ modalImage.addEventListener("error", () => {
 document.querySelectorAll("[data-project]").forEach((project) => {
   const openButton = project.querySelector(".project-open");
 
-  project.addEventListener("pointerenter", () => prepareProjectMedia(project), { once: true });
-  openButton.addEventListener("focus", () => prepareProjectMedia(project), { once: true });
+  prepareProjectMedia(project);
   openButton.addEventListener("click", () => {
-    prepareProjectMedia(project);
     openDetailModal(project);
   });
 });
