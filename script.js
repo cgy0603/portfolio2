@@ -91,14 +91,31 @@ document.querySelectorAll(".reveal").forEach((element) => observer.observe(eleme
 document.querySelectorAll("[data-track]").forEach((track) => {
   const sliderName = track.dataset.track;
   const buttons = [...document.querySelectorAll(`[data-slider="${sliderName}"]`)];
+  const currentStatus = document.querySelector(`[data-slider-current="${sliderName}"]`);
+  const totalStatus = document.querySelector(`[data-slider-total="${sliderName}"]`);
+
+  if (totalStatus) {
+    totalStatus.textContent = String(track.children.length).padStart(2, "0");
+  }
 
   function updateSliderButtons() {
     const maxScroll = track.scrollWidth - track.clientWidth;
+    const card = track.firstElementChild;
+    const gap = Number.parseFloat(getComputedStyle(track).gap) || 0;
+    const step = card ? card.getBoundingClientRect().width + gap : 1;
+    const currentIndex = Math.min(
+      track.children.length,
+      Math.max(1, Math.round(track.scrollLeft / step) + 1)
+    );
 
     buttons.forEach((button) => {
       const direction = Number(button.dataset.direction);
       button.disabled = direction < 0 ? track.scrollLeft <= 2 : track.scrollLeft >= maxScroll - 2;
     });
+
+    if (currentStatus) {
+      currentStatus.textContent = String(currentIndex).padStart(2, "0");
+    }
   }
 
   buttons.forEach((button) => {

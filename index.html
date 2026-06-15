@@ -92,6 +92,22 @@
                                     <dd>영상 편집 · 모션 디자인</dd>
                                 </div>
                             </dl>
+                            <div class="about-history" aria-label="학력 및 교육사항">
+                                <section class="history-group">
+                                    <h3>학력</h3>
+                                    <div class="history-item">
+                                        <p>학교명 · 전공</p>
+                                        <span>졸업 연도 입력</span>
+                                    </div>
+                                </section>
+                                <section class="history-group">
+                                    <h3>교육사항</h3>
+                                    <div class="history-item">
+                                        <p>교육기관 · 과정명</p>
+                                        <span>수료 기간 입력</span>
+                                    </div>
+                                </section>
+                            </div>
                             <div class="about-skills">
                                 <h3>사용 도구</h3>
                                 <ul class="tool-list" aria-label="사용 가능한 제작 도구">
@@ -133,16 +149,28 @@
                                         </span>
                                         <span>Kling</span>
                                     </li>
+                                    <li class="tool-item">
+                                        <span class="tool-icon brand-tool-icon html-icon" aria-hidden="true">
+                                            <svg viewBox="0 0 48 48">
+                                                <path d="M8 4h32l-3 34-13 4-13-4L8 4Z" />
+                                                <path d="M16 14h17l-.5 5H21l.4 4h10.7l-1 11L24 36l-7.1-2-.5-6h5l.2 2.2 2.4.7 2.5-.7.3-3H16.1L14.8 14Z" />
+                                            </svg>
+                                        </span>
+                                        <span>HTML</span>
+                                    </li>
+                                    <li class="tool-item">
+                                        <span class="tool-icon brand-tool-icon" aria-hidden="true">
+                                            <svg viewBox="0 0 24 24">
+                                                <path
+                                                    d="M15 22v-3.9c.04-1-.35-1.96-1.1-2.6 3.6-.4 7.4-1.8 7.4-8a6.2 6.2 0 0 0-1.65-4.3A5.8 5.8 0 0 0 19.5 1S18.2.6 15 2.65a15 15 0 0 0-6 0C5.8.6 4.5 1 4.5 1a5.8 5.8 0 0 0-.15 2.2A6.2 6.2 0 0 0 2.7 7.5c0 6.2 3.8 7.6 7.4 8-.74.63-1.13 1.57-1.1 2.55V22"
+                                                />
+                                                <path d="M9 19c-3 .9-3-1.5-4.2-2" />
+                                            </svg>
+                                        </span>
+                                        <span>GitHub</span>
+                                    </li>
                                 </ul>
                             </div>
-                        </div>
-                        <div
-                            class="portrait image-slot reveal"
-                            data-image="./assets/images/profile.jpg"
-                            role="img"
-                            aria-label="프로필 이미지"
-                        >
-                            <span class="image-label">프로필 이미지<br />800 × 1000</span>
                         </div>
                     </div>
                 </div>
@@ -152,14 +180,6 @@
                 <div class="shell">
                     <div class="section-heading row-heading reveal">
                         <h2>프로젝트</h2>
-                        <div class="slider-controls">
-                            <button type="button" data-slider="projects" data-direction="-1" aria-label="이전 프로젝트">
-                                ←
-                            </button>
-                            <button type="button" data-slider="projects" data-direction="1" aria-label="다음 프로젝트">
-                                →
-                            </button>
-                        </div>
                     </div>
                     <div class="card-track" data-track="projects">
                         <article
@@ -187,8 +207,9 @@
                                 <span>2026</span>
                             </div>
                             <h3>고요한 움직임</h3>
-                            <div class="project-quick-info">
-                                <span>Pr · Ae</span>
+                            <div class="card-tools" aria-label="사용 도구">
+                                <span class="card-tool-icon" title="Premiere Pro" aria-label="Premiere Pro">Pr</span>
+                                <span class="card-tool-icon" title="After Effects" aria-label="After Effects">Ae</span>
                             </div>
                         </article>
                         <article
@@ -216,8 +237,10 @@
                                 <span>2025</span>
                             </div>
                             <h3>여름의 형태</h3>
-                            <div class="project-quick-info">
-                                <span>Ae · Ps · Ai</span>
+                            <div class="card-tools" aria-label="사용 도구">
+                                <span class="card-tool-icon" title="After Effects" aria-label="After Effects">Ae</span>
+                                <span class="card-tool-icon" title="Photoshop" aria-label="Photoshop">Ps</span>
+                                <span class="card-tool-icon" title="Illustrator" aria-label="Illustrator">Ai</span>
                             </div>
                         </article>
                         <article
@@ -245,8 +268,9 @@
                                 <span>2025</span>
                             </div>
                             <h3>일상의 리듬</h3>
-                            <div class="project-quick-info">
-                                <span>Pr · Ae</span>
+                            <div class="card-tools" aria-label="사용 도구">
+                                <span class="card-tool-icon" title="Premiere Pro" aria-label="Premiere Pro">Pr</span>
+                                <span class="card-tool-icon" title="After Effects" aria-label="After Effects">Ae</span>
                             </div>
                         </article>
                         <article
@@ -274,8 +298,9 @@
                                 <span>2024</span>
                             </div>
                             <h3>푸른 시퀀스</h3>
-                            <div class="project-quick-info">
-                                <span>Pr · Ae</span>
+                            <div class="card-tools" aria-label="사용 도구">
+                                <span class="card-tool-icon" title="Premiere Pro" aria-label="Premiere Pro">Pr</span>
+                                <span class="card-tool-icon" title="After Effects" aria-label="After Effects">Ae</span>
                             </div>
                         </article>
                         <article
@@ -303,10 +328,38 @@
                                 <span>2024</span>
                             </div>
                             <h3>새로운 시선</h3>
-                            <div class="project-quick-info">
-                                <span>Ae · Pr</span>
+                            <div class="card-tools" aria-label="사용 도구">
+                                <span class="card-tool-icon" title="After Effects" aria-label="After Effects">Ae</span>
+                                <span class="card-tool-icon" title="Premiere Pro" aria-label="Premiere Pro">Pr</span>
                             </div>
                         </article>
+                    </div>
+                    <div class="slider-navigation reveal" aria-label="프로젝트 슬라이드 이동">
+                        <p class="slider-hint">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M8 7 3 12l5 5M16 7l5 5-5 5M4 12h16" />
+                            </svg>
+                            옆으로 넘겨 더 보기
+                        </p>
+                        <p class="slider-status" aria-live="polite">
+                            <span data-slider-current="projects">01</span>
+                            <span aria-hidden="true">/</span>
+                            <span data-slider-total="projects">05</span>
+                        </p>
+                        <div class="slider-controls">
+                            <button type="button" data-slider="projects" data-direction="-1">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="m15 5-7 7 7 7" />
+                                </svg>
+                                <span>이전</span>
+                            </button>
+                            <button type="button" data-slider="projects" data-direction="1">
+                                <span>다음</span>
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="m9 5 7 7-7 7" />
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -315,14 +368,6 @@
                 <div class="shell">
                     <div class="section-heading row-heading reveal">
                         <h2>디자인 아카이브</h2>
-                        <div class="slider-controls">
-                            <button type="button" data-slider="designs" data-direction="-1" aria-label="이전 디자인">
-                                ←
-                            </button>
-                            <button type="button" data-slider="designs" data-direction="1" aria-label="다음 디자인">
-                                →
-                            </button>
-                        </div>
                     </div>
                     <div class="card-track design-track" data-track="designs">
                         <article
@@ -349,6 +394,10 @@
                                 <span>2025</span>
                             </div>
                             <h3>에디토리얼 포스터</h3>
+                            <div class="card-tools" aria-label="사용 도구">
+                                <span class="card-tool-icon" title="Photoshop" aria-label="Photoshop">Ps</span>
+                                <span class="card-tool-icon" title="Illustrator" aria-label="Illustrator">Ai</span>
+                            </div>
                         </article>
                         <article
                             class="design-card reveal"
@@ -374,6 +423,10 @@
                                 <span>2025</span>
                             </div>
                             <h3>모션 프레임</h3>
+                            <div class="card-tools" aria-label="사용 도구">
+                                <span class="card-tool-icon" title="After Effects" aria-label="After Effects">Ae</span>
+                                <span class="card-tool-icon" title="Photoshop" aria-label="Photoshop">Ps</span>
+                            </div>
                         </article>
                         <article
                             class="design-card reveal"
@@ -399,20 +452,79 @@
                                 <span>2024</span>
                             </div>
                             <h3>타이포그래피 실험</h3>
+                            <div class="card-tools" aria-label="사용 도구">
+                                <span class="card-tool-icon" title="Illustrator" aria-label="Illustrator">Ai</span>
+                                <span class="card-tool-icon" title="Photoshop" aria-label="Photoshop">Ps</span>
+                            </div>
                         </article>
+                        <article
+                            class="design-card reveal"
+                            data-design
+                            data-title="브랜드 컬러 시스템"
+                            data-category="브랜드 디자인"
+                            data-year="2024"
+                            data-modal-image="./assets/images/design-04.jpg"
+                            data-description="브랜드의 인상을 일관되게 전달할 수 있도록 색상 조합과 활용 원칙을 정리한 컬러 시스템입니다."
+                            data-role="브랜드 디자인, 컬러 시스템"
+                            data-contribution="핵심 색상과 보조 색상의 관계를 설계하고 다양한 콘텐츠에 적용할 수 있는 활용 기준을 제작했습니다."
+                        >
+                            <button
+                                class="design-image image-slot design-open"
+                                type="button"
+                                data-image="./assets/images/design-04.jpg"
+                                aria-label="브랜드 컬러 시스템 상세 보기"
+                            >
+                                <span class="image-label">디자인 04</span>
+                            </button>
+                            <div class="card-meta">
+                                <p>브랜드 디자인</p>
+                                <span>2024</span>
+                            </div>
+                            <h3>브랜드 컬러 시스템</h3>
+                            <div class="card-tools" aria-label="사용 도구">
+                                <span class="card-tool-icon" title="Illustrator" aria-label="Illustrator">Ai</span>
+                                <span class="card-tool-icon" title="Photoshop" aria-label="Photoshop">Ps</span>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="slider-navigation reveal" aria-label="디자인 아카이브 슬라이드 이동">
+                        <p class="slider-hint">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M8 7 3 12l5 5M16 7l5 5-5 5M4 12h16" />
+                            </svg>
+                            옆으로 넘겨 더 보기
+                        </p>
+                        <p class="slider-status" aria-live="polite">
+                            <span data-slider-current="designs">01</span>
+                            <span aria-hidden="true">/</span>
+                            <span data-slider-total="designs">04</span>
+                        </p>
+                        <div class="slider-controls">
+                            <button type="button" data-slider="designs" data-direction="-1">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="m15 5-7 7 7 7" />
+                                </svg>
+                                <span>이전</span>
+                            </button>
+                            <button type="button" data-slider="designs" data-direction="1">
+                                <span>다음</span>
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="m9 5 7 7-7 7" />
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <section class="contact section" id="contact">
                 <div class="shell">
-                    <div class="section-heading reveal">
-                        <h2>연락처</h2>
+                    <div class="section-heading contact-heading reveal">
+                        <h2>함께 만들<br />프로젝트가 있으신가요?</h2>
                     </div>
                     <div class="contact-grid">
                         <div class="contact-copy reveal">
-                            <p class="contact-lead">함께 만들<br />프로젝트가 있으신가요?</p>
-                            <p>새로운 프로젝트와 재미있는 협업 이야기를 기다리고 있습니다.</p>
+                            <p class="contact-description">새로운 프로젝트와 재미있는 협업 이야기를 기다리고 있습니다.</p>
                         </div>
                         <div class="contact-links reveal">
                             <a href="mailto:cgy0603@naver.com"><span>이메일</span>cgy0603@naver.com</a>
@@ -439,7 +551,15 @@
                 <div class="modal-media">
                     <iframe
                         title="프로젝트 영상"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allow="
+                            accelerometer;
+                            autoplay;
+                            clipboard-write;
+                            encrypted-media;
+                            gyroscope;
+                            picture-in-picture;
+                            web-share;
+                        "
                         allowfullscreen
                     ></iframe>
                     <img alt="" />

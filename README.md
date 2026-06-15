@@ -17,6 +17,7 @@
 - `design-01.jpg`
 - `design-02.jpg`
 - `design-03.jpg`
+- `design-04.jpg`
 
 다른 파일명이나 외부 이미지 주소를 사용하려면 `index.html`의
 `data-image="./assets/images/..."` 값만 변경하면 됩니다.
@@ -44,7 +45,7 @@
 ## 디자인 상세 팝업
 
 Design Archive 카드도 클릭하면 이미지와 상세 설명이 담긴 팝업이 열립니다.
-이미지는 `assets/images/design-01.jpg`부터 `design-03.jpg`까지 연결되어 있습니다.
+이미지는 `assets/images/design-01.jpg`부터 `design-04.jpg`까지 연결되어 있습니다.
 
 각 디자인의 제목, 분류, 연도, 원본 이미지, 설명, 담당 업무와 기여 내용은
 `index.html`의 `data-design`이 붙은 `<article>` 안에서 수정할 수 있습니다.
