@@ -131,13 +131,32 @@ button {
   position: relative;
 }
 
-.eyebrow {
-  margin: 0 0 26px;
+.hero-eyebrow {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  margin: 0 0 30px;
   color: var(--muted);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
+}
+
+.hero-eyebrow span + span {
+  position: relative;
+  padding-left: 23px;
+}
+
+.hero-eyebrow span + span::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 1px;
+  height: 14px;
+  background: rgba(27, 58, 107, 0.28);
+  transform: translateY(-50%);
 }
 
 h1,
@@ -147,26 +166,34 @@ p {
   margin-top: 0;
 }
 
-h1 {
-  max-width: 700px;
-  margin-bottom: 34px;
+.hero-title {
+  max-width: 680px;
+  margin-bottom: 32px;
   font-family: var(--font-main);
-  font-size: clamp(58px, 5.6vw, 92px);
-  font-weight: 400;
-  letter-spacing: -0.025em;
-  line-height: 1.08;
-  text-transform: uppercase;
+  font-size: clamp(58px, 5vw, 82px);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 1;
 }
 
-h1 span {
+.hero-title-intro {
   display: block;
-  margin-top: 16px;
-  font-family: var(--font-design);
-  font-size: 0.72em;
-  font-style: italic;
+  margin-bottom: 18px;
+  color: var(--muted);
+  font-size: 0.48em;
+  font-weight: 500;
   letter-spacing: -0.015em;
-  line-height: 1.18;
-  text-transform: none;
+  line-height: 1.3;
+}
+
+.hero-title-main {
+  display: block;
+  font-family: var(--font-design);
+  font-size: 1em;
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 1.22;
+  word-break: keep-all;
 }
 
 .hero-description {
@@ -694,8 +721,9 @@ h1 span {
 
 .card-meta {
   display: flex;
-  justify-content: space-between;
-  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 6px;
   margin-top: 0;
   padding: 18px 18px 0;
   color: var(--muted);
@@ -708,6 +736,20 @@ h1 span {
   margin: 0;
 }
 
+.card-meta > span {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.card-meta > span::before {
+  content: "";
+  width: 3px;
+  height: 3px;
+  background: currentColor;
+  border-radius: 50%;
+}
+
 .project-card h3,
 .design-card h3 {
   margin: 8px 18px 0;
@@ -718,7 +760,7 @@ h1 span {
 
 .card-tools {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   gap: 6px;
   margin: 10px 18px 0;
   padding: 10px 0 18px;
@@ -1247,8 +1289,29 @@ footer {
     gap: 44px;
   }
 
-  h1 {
-    font-size: 52px;
+  .hero-eyebrow {
+    gap: 14px;
+    margin-bottom: 24px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+  }
+
+  .hero-eyebrow span + span {
+    padding-left: 15px;
+  }
+
+  .hero-title {
+    font-size: 48px;
+  }
+
+  .hero-title-intro {
+    margin-bottom: 12px;
+    font-size: 0.52em;
+  }
+
+  .hero-title-main {
+    letter-spacing: -0.06em;
+    line-height: 1.2;
   }
 
   .hero-actions {
