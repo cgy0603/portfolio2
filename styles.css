@@ -324,27 +324,45 @@ p {
 
 .about-grid {
   display: grid;
-  grid-template-columns: 0.75fr 1.45fr;
-  gap: clamp(60px, 8vw, 140px);
+  grid-template-columns: minmax(260px, 0.78fr) minmax(0, 1.42fr);
+  gap: clamp(44px, 6.5vw, 104px);
   align-items: start;
 }
 
+.about-intro {
+  position: sticky;
+  top: 118px;
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: clamp(88px, 8vw, 136px);
+  padding: 30px 0 30px 28px;
+  border-left: 1px solid rgba(27, 58, 107, 0.22);
+}
+
 .about-lead {
-  max-width: 360px;
+  max-width: 420px;
+  margin: 0;
   color: rgba(27, 58, 107, 0.86);
   font-family: var(--font-design);
   font-size: clamp(28px, 2.6vw, 40px);
   line-height: 1.45;
 }
 
-.about-copy > p {
-  margin-bottom: 40px;
+.about-summary {
+  max-width: 420px;
+  margin: 0;
   color: var(--muted);
   font-family: var(--font-main);
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 400;
-  line-height: 1.8;
+  line-height: 1.85;
   word-break: keep-all;
+}
+
+.about-copy {
+  min-width: 0;
 }
 
 .profile-list {
@@ -353,8 +371,10 @@ p {
 
 .profile-list div {
   display: grid;
-  grid-template-columns: 120px 1fr;
-  padding: 16px 0;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+  padding: 18px 0;
   border-top: 1px solid var(--line);
 }
 
@@ -368,6 +388,7 @@ p {
 .profile-list dd {
   margin: 0;
   font-size: 16px;
+  line-height: 1.65;
 }
 
 .about-history {
@@ -376,8 +397,10 @@ p {
 
 .history-group {
   display: grid;
-  grid-template-columns: 120px 1fr;
-  padding: 16px 0;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+  padding: 20px 0;
   border-top: 1px solid var(--line);
 }
 
@@ -390,10 +413,20 @@ p {
 }
 
 .history-item {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 6px 20px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  gap: 8px 28px;
+  align-items: start;
+}
+
+.history-item + .history-item {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(27, 58, 107, 0.08);
+}
+
+.history-item > div {
+  min-width: 0;
 }
 
 .history-item p {
@@ -403,20 +436,74 @@ p {
   font-weight: 400;
 }
 
+.history-item small {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+  word-break: keep-all;
+}
+
 .history-item span {
   color: var(--muted);
   font-size: 15px;
   font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.license-list {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.license-list li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  gap: 18px;
+  align-items: baseline;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(27, 58, 107, 0.08);
+}
+
+.license-list li:first-child {
+  padding-top: 0;
+}
+
+.license-list li:last-child {
+  border-bottom: 0;
+}
+
+.license-list span {
+  min-width: 0;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.license-list time {
+  color: var(--muted);
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 
 .about-skills {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
   margin-top: 0;
   padding-top: 22px;
   border-top: 1px solid var(--line);
 }
 
 .about-skills h3 {
-  margin-bottom: 24px;
+  margin: 0;
   color: var(--muted);
   font-family: var(--font-main);
   font-size: 16px;
@@ -689,6 +776,48 @@ p {
   background-size: cover, contain;
 }
 
+.card-image::before,
+.design-image::before {
+  content: none;
+}
+
+.card-image[data-media-orientation="portrait"] {
+  isolation: isolate;
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(27, 58, 107, 0.18));
+  background-position: center;
+  background-size: cover;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.46);
+}
+
+.card-image[data-media-orientation="portrait"]::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: -28px;
+  background-image: var(--image);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  filter: blur(18px);
+  opacity: 0.68;
+  pointer-events: none;
+  transform: scale(1.08);
+}
+
+.card-image[data-media-orientation="portrait"]::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  height: calc(100% - 36px);
+  aspect-ratio: 9 / 16;
+  background: var(--image) center / cover no-repeat;
+  border: 1px solid rgba(255, 255, 255, 0.74);
+  box-shadow: 0 12px 26px rgba(27, 58, 107, 0.24);
+  transform: translate(-50%, -50%);
+}
+
 .project-card:hover .card-image,
 .design-card:hover .design-image {
   filter: brightness(0.97);
@@ -697,6 +826,7 @@ p {
 
 .thumbnail-play {
   position: absolute;
+  z-index: 2;
   top: 50%;
   left: 50%;
   width: 62px;
@@ -704,8 +834,8 @@ p {
   display: grid;
   place-items: center;
   padding-left: 4px;
-  color: var(--white);
-  background: rgba(27, 58, 107, 0.82);
+  color: var(--black);
+  background: rgba(255, 255, 255, 1);
   border-radius: 50%;
   font-size: 16px;
   opacity: 0;
@@ -738,16 +868,12 @@ p {
 
 .card-meta > span {
   display: inline-flex;
-  gap: 6px;
   align-items: center;
+  margin-left: 2px;
 }
 
 .card-meta > span::before {
-  content: "";
-  width: 3px;
-  height: 3px;
-  background: currentColor;
-  border-radius: 50%;
+  content: none;
 }
 
 .project-card h3,
@@ -779,6 +905,13 @@ p {
   font-size: 11px;
   font-weight: 600;
   letter-spacing: -0.04em;
+}
+
+.card-tool-image img {
+  width: 19px;
+  height: 19px;
+  display: block;
+  object-fit: contain;
 }
 
 .project-modal {
@@ -1344,12 +1477,32 @@ footer {
     grid-template-columns: 1fr;
   }
 
+  .about-intro {
+    position: static;
+    min-height: auto;
+    gap: 24px;
+    padding: 0 0 30px;
+    border-left: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .profile-list div,
+  .history-group {
+    grid-template-columns: 92px minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .about-skills {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
   .tool-list {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .history-group {
-    grid-template-columns: 92px minmax(0, 1fr);
+    padding: 18px 0;
   }
 
   .history-item {
@@ -1359,6 +1512,17 @@ footer {
   .history-item span {
     display: block;
     margin-top: 5px;
+    text-align: left;
+    white-space: normal;
+  }
+
+  .license-list li {
+    grid-template-columns: 1fr;
+    gap: 3px;
+  }
+
+  .license-list time {
+    white-space: normal;
   }
 
   .row-heading {
