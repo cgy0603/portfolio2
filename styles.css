@@ -1120,6 +1120,11 @@ p {
     box-shadow 0.3s ease;
 }
 
+.perfume-thumbnail {
+  background-position: center 70%;
+  background-size: 118% auto;
+}
+
 .design-image .image-label {
   color: rgba(255, 255, 255, 0.88);
 }
@@ -1580,6 +1585,11 @@ footer {
 
   .design-image {
     height: 290px;
+  }
+
+  .perfume-thumbnail {
+    background-position: center 68%;
+    background-size: 126% auto;
   }
 
   .resume-download {
