@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Youngmin logo">
+  <rect width="64" height="64" rx="13" fill="#10294f" />
+  <rect x="6" y="6" width="52" height="52" rx="9" fill="none" stroke="#ffffff" stroke-opacity="0.32" stroke-width="3" />
+  <path d="M15 18 32 35 49 18" fill="none" stroke="#ffffff" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M15 47V29L32 46 49 29V47" fill="none" stroke="#ffffff" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M44 12h8v8" fill="none" stroke="#5aa7ff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+</svg>
