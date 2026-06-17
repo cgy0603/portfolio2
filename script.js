@@ -144,9 +144,7 @@ const modalImage = projectModal.querySelector("img");
 const mediaPlaceholder = projectModal.querySelector(".media-placeholder");
 const modalTitle = projectModal.querySelector("#modal-title");
 const modalMeta = projectModal.querySelector(".modal-meta");
-const modalDescription = projectModal.querySelector("[data-modal-description]");
-const modalRole = projectModal.querySelector("[data-modal-role]");
-const modalContribution = projectModal.querySelector("[data-modal-contribution]");
+const modalDetails = projectModal.querySelector(".modal-details");
 let lastFocusedElement = null;
 let currentModalItem = null;
 
@@ -217,10 +215,29 @@ function prepareProjectMedia(project) {
   }
 }
 
+function renderModalDetails(items) {
+  modalDetails.replaceChildren();
+
+  items
+    .filter(({ value }) => value && value.trim())
+    .forEach(({ term, value }) => {
+      const row = document.createElement("div");
+      const title = document.createElement("dt");
+      const description = document.createElement("dd");
+
+      title.textContent = term;
+      description.textContent = value;
+      row.append(title, description);
+      modalDetails.append(row);
+    });
+}
+
 function openDetailModal(item) {
   const {
     title,
     category,
+    displayTitle,
+    displayCategory,
     year,
     youtube,
     modalImage: image,
@@ -229,19 +246,37 @@ function openDetailModal(item) {
     description,
     role,
     contribution,
+    designFocus,
+    designStructure,
+    designTools,
   } = item.dataset;
+  const isDesign = item.hasAttribute("data-design");
+  const modalDisplayTitle = displayTitle || title;
+  const modalDisplayCategory = displayCategory || category;
 
   lastFocusedElement = document.activeElement;
   currentModalItem = item;
+  modalDialog.dataset.modalType = isDesign ? "design" : "project";
   updateModalMediaLayout(
     Number(mediaWidth) || Number(item.dataset.thumbnailWidth) || 16,
     Number(mediaHeight) || Number(item.dataset.thumbnailHeight) || 9
   );
-  modalTitle.textContent = title;
-  modalMeta.textContent = `${category} · ${year}`;
-  modalDescription.textContent = description;
-  modalRole.textContent = role;
-  modalContribution.textContent = contribution;
+  modalTitle.textContent = modalDisplayTitle;
+  modalMeta.textContent = `${modalDisplayCategory} \u00b7 ${year}`;
+  renderModalDetails(
+    isDesign
+      ? [
+          { term: "\uc791\uc5c5 \uac1c\uc694", value: description },
+          { term: "\ub514\uc790\uc778 \ud3ec\uc778\ud2b8", value: designFocus },
+          { term: "\ud398\uc774\uc9c0 \uad6c\uc131", value: designStructure },
+          { term: "\uc0ac\uc6a9 \ub3c4\uad6c", value: designTools },
+        ]
+      : [
+          { term: "\uc18c\uac1c", value: description },
+          { term: "\ub2f4\ub2f9 \uc5ed\ud560", value: role },
+          { term: "\uae30\uc5ec \ub0b4\uc6a9", value: contribution },
+        ]
+  );
 
   modalEmbed.removeAttribute("src");
   modalImage.removeAttribute("src");
@@ -278,6 +313,7 @@ function closeProjectModal() {
   modalImage.removeAttribute("src");
   modalImage.alt = "";
   updateModalMediaLayout();
+  delete modalDialog.dataset.modalType;
   currentModalItem = null;
   document.body.style.overflow = "";
   lastFocusedElement?.focus();
