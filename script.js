@@ -145,6 +145,8 @@ const mediaPlaceholder = projectModal.querySelector(".media-placeholder");
 const modalTitle = projectModal.querySelector("#modal-title");
 const modalMeta = projectModal.querySelector(".modal-meta");
 const modalDetails = projectModal.querySelector(".modal-details");
+const modalGallery = projectModal.querySelector(".modal-gallery");
+const modalGalleryList = projectModal.querySelector(".modal-gallery-list");
 let lastFocusedElement = null;
 let currentModalItem = null;
 
@@ -232,6 +234,81 @@ function renderModalDetails(items) {
     });
 }
 
+function parseGalleryItems(source) {
+  if (!source) {
+    return [];
+  }
+
+  return source
+    .split("||")
+    .map((item) => {
+      const [src, caption, alt] = item.split("|").map((part) => part.trim());
+      return { src, caption, alt };
+    })
+    .filter(({ src }) => src);
+}
+
+function syncModalGalleryItems() {
+  [...modalGalleryList.children].forEach((figure, index) => {
+    const number = figure.querySelector(".modal-gallery-index");
+
+    if (number) {
+      number.textContent = String(index + 1).padStart(2, "0");
+    }
+  });
+
+  modalGallery.hidden = modalGalleryList.children.length === 0;
+}
+
+function renderModalGallery(items, title) {
+  modalGalleryList.replaceChildren();
+  modalGallery.hidden = true;
+
+  if (!items.length) {
+    return;
+  }
+
+  items.forEach(({ src, caption, alt }, index) => {
+    const figure = document.createElement("figure");
+    const number = document.createElement("span");
+    const image = document.createElement("img");
+
+    figure.className = "modal-gallery-item is-loading";
+    number.className = "modal-gallery-index";
+    number.textContent = String(index + 1).padStart(2, "0");
+
+    image.loading = "lazy";
+    image.decoding = "async";
+    const imageDescription = alt || caption;
+    image.alt = imageDescription
+      ? `${title} - ${imageDescription}`
+      : `${title} 작업 이미지 ${String(index + 1).padStart(2, "0")}`;
+
+    image.addEventListener("load", () => {
+      figure.dataset.orientation = getMediaOrientation(image.naturalWidth, image.naturalHeight);
+      figure.classList.remove("is-loading");
+    });
+
+    image.addEventListener("error", () => {
+      figure.remove();
+      syncModalGalleryItems();
+    });
+
+    figure.append(number, image);
+
+    if (caption) {
+      const description = document.createElement("figcaption");
+      description.textContent = caption;
+      figure.append(description);
+    }
+
+    modalGalleryList.append(figure);
+    image.src = src;
+  });
+
+  syncModalGalleryItems();
+}
+
 function openDetailModal(item) {
   const {
     title,
@@ -249,6 +326,7 @@ function openDetailModal(item) {
     designFocus,
     designStructure,
     designTools,
+    gallery,
   } = item.dataset;
   const isDesign = item.hasAttribute("data-design");
   const modalDisplayTitle = displayTitle || title;
@@ -277,6 +355,7 @@ function openDetailModal(item) {
           { term: "\uae30\uc5ec \ub0b4\uc6a9", value: contribution },
         ]
   );
+  renderModalGallery(parseGalleryItems(gallery), modalDisplayTitle);
 
   modalEmbed.removeAttribute("src");
   modalImage.removeAttribute("src");
@@ -312,6 +391,7 @@ function closeProjectModal() {
   modalEmbed.removeAttribute("src");
   modalImage.removeAttribute("src");
   modalImage.alt = "";
+  renderModalGallery([], "");
   updateModalMediaLayout();
   delete modalDialog.dataset.modalType;
   currentModalItem = null;
