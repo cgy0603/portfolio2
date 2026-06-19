@@ -1414,7 +1414,8 @@ p {
   border: 1px solid rgba(27, 58, 107, 0.12);
 }
 
-.modal-gallery-item img {
+.modal-gallery-item img,
+.modal-gallery-item video {
   width: 100%;
   max-height: min(560px, 68vh);
   display: block;
@@ -1426,7 +1427,8 @@ p {
   min-height: 220px;
 }
 
-.modal-gallery-item.is-loading img {
+.modal-gallery-item.is-loading img,
+.modal-gallery-item.is-loading video {
   opacity: 0;
 }
 
@@ -2125,7 +2127,8 @@ footer {
     gap: 14px;
   }
 
-  .modal-gallery-item img {
+  .modal-gallery-item img,
+  .modal-gallery-item video {
     max-height: none;
   }
 

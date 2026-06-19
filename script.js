@@ -260,6 +260,10 @@ function syncModalGalleryItems() {
   modalGallery.hidden = modalGalleryList.children.length === 0;
 }
 
+function isVideoSource(src) {
+  return /\.(mp4|webm|mov)$/i.test(src);
+}
+
 function renderModalGallery(items, title) {
   modalGalleryList.replaceChildren();
   modalGallery.hidden = true;
@@ -271,30 +275,50 @@ function renderModalGallery(items, title) {
   items.forEach(({ src, caption, alt }, index) => {
     const figure = document.createElement("figure");
     const number = document.createElement("span");
-    const image = document.createElement("img");
+    const isVideo = isVideoSource(src);
+    const media = document.createElement(isVideo ? "video" : "img");
 
     figure.className = "modal-gallery-item is-loading";
     number.className = "modal-gallery-index";
     number.textContent = String(index + 1).padStart(2, "0");
 
-    image.loading = "lazy";
-    image.decoding = "async";
     const imageDescription = alt || caption;
-    image.alt = imageDescription
-      ? `${title} - ${imageDescription}`
-      : `${title} 작업 이미지 ${String(index + 1).padStart(2, "0")}`;
+    const fallbackDescription = `${title} 작업 이미지 ${String(index + 1).padStart(2, "0")}`;
+    const accessibleDescription = imageDescription ? `${title} - ${imageDescription}` : fallbackDescription;
 
-    image.addEventListener("load", () => {
-      figure.dataset.orientation = getMediaOrientation(image.naturalWidth, image.naturalHeight);
-      figure.classList.remove("is-loading");
-    });
+    if (isVideo) {
+      media.muted = true;
+      media.autoplay = true;
+      media.loop = true;
+      media.playsInline = true;
+      media.preload = "metadata";
+      media.setAttribute("aria-label", accessibleDescription);
 
-    image.addEventListener("error", () => {
+      media.addEventListener("loadedmetadata", () => {
+        figure.dataset.orientation = getMediaOrientation(media.videoWidth, media.videoHeight);
+        figure.classList.remove("is-loading");
+      });
+
+      media.addEventListener("canplay", () => {
+        media.play().catch(() => {});
+      });
+    } else {
+      media.loading = "lazy";
+      media.decoding = "async";
+      media.alt = accessibleDescription;
+
+      media.addEventListener("load", () => {
+        figure.dataset.orientation = getMediaOrientation(media.naturalWidth, media.naturalHeight);
+        figure.classList.remove("is-loading");
+      });
+    }
+
+    media.addEventListener("error", () => {
       figure.remove();
       syncModalGalleryItems();
     });
 
-    figure.append(number, image);
+    figure.append(number, media);
 
     if (caption) {
       const description = document.createElement("figcaption");
@@ -303,7 +327,7 @@ function renderModalGallery(items, title) {
     }
 
     modalGalleryList.append(figure);
-    image.src = src;
+    media.src = src;
   });
 
   syncModalGalleryItems();
