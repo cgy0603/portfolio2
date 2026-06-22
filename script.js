@@ -248,8 +248,24 @@ function parseGalleryItems(source) {
     .filter(({ src }) => src);
 }
 
+function parseGalleryStages(source) {
+  if (!source) {
+    return [];
+  }
+
+  return source
+    .split("||")
+    .map((item) => {
+      const [count, title, description] = item.split("|").map((part) => part.trim());
+      return { count: Number.parseInt(count, 10), title, description };
+    })
+    .filter(({ count, title }) => Number.isInteger(count) && count >= 0 && title);
+}
+
 function syncModalGalleryItems() {
-  [...modalGalleryList.children].forEach((figure, index) => {
+  const galleryItems = [...modalGalleryList.querySelectorAll(".modal-gallery-item")];
+
+  galleryItems.forEach((figure, index) => {
     const number = figure.querySelector(".modal-gallery-index");
 
     if (number) {
@@ -257,77 +273,152 @@ function syncModalGalleryItems() {
     }
   });
 
-  modalGallery.hidden = modalGalleryList.children.length === 0;
+  modalGallery.hidden = galleryItems.length === 0;
 }
 
 function isVideoSource(src) {
   return /\.(mp4|webm|mov)$/i.test(src);
 }
 
-function renderModalGallery(items, title) {
+function createGalleryItem({ src, caption, alt }, title, index) {
+  const figure = document.createElement("figure");
+  const number = document.createElement("span");
+  const isVideo = isVideoSource(src);
+  const media = document.createElement(isVideo ? "video" : "img");
+
+  figure.className = "modal-gallery-item is-loading";
+  number.className = "modal-gallery-index";
+  number.textContent = String(index + 1).padStart(2, "0");
+
+  const imageDescription = alt || caption;
+  const fallbackDescription = `${title} 작업 이미지 ${String(index + 1).padStart(2, "0")}`;
+  const accessibleDescription = imageDescription ? `${title} - ${imageDescription}` : fallbackDescription;
+
+  if (isVideo) {
+    media.muted = true;
+    media.autoplay = true;
+    media.loop = true;
+    media.playsInline = true;
+    media.preload = "metadata";
+    media.setAttribute("aria-label", accessibleDescription);
+
+    media.addEventListener("loadedmetadata", () => {
+      figure.dataset.orientation = getMediaOrientation(media.videoWidth, media.videoHeight);
+      figure.classList.remove("is-loading");
+    });
+
+    media.addEventListener("canplay", () => {
+      media.play().catch(() => {});
+    });
+  } else {
+    media.loading = "lazy";
+    media.decoding = "async";
+    media.alt = accessibleDescription;
+
+    media.addEventListener("load", () => {
+      figure.dataset.orientation = getMediaOrientation(media.naturalWidth, media.naturalHeight);
+      figure.classList.remove("is-loading");
+    });
+  }
+
+  media.addEventListener("error", () => {
+    const stage = figure.closest(".modal-gallery-stage");
+    figure.remove();
+
+    if (stage && !stage.querySelector(".modal-gallery-item")) {
+      stage.remove();
+    }
+
+    syncModalGalleryItems();
+  });
+
+  figure.append(number, media);
+
+  if (caption) {
+    const description = document.createElement("figcaption");
+    description.textContent = caption;
+    figure.append(description);
+  }
+
+  queueMicrotask(() => {
+    media.src = src;
+  });
+  return figure;
+}
+
+function renderModalGallery(items, title, stages = []) {
   modalGalleryList.replaceChildren();
+  modalGalleryList.classList.toggle("is-staged", stages.length > 0);
   modalGallery.hidden = true;
 
   if (!items.length) {
     return;
   }
 
-  items.forEach(({ src, caption, alt }, index) => {
-    const figure = document.createElement("figure");
-    const number = document.createElement("span");
-    const isVideo = isVideoSource(src);
-    const media = document.createElement(isVideo ? "video" : "img");
-
-    figure.className = "modal-gallery-item is-loading";
-    number.className = "modal-gallery-index";
-    number.textContent = String(index + 1).padStart(2, "0");
-
-    const imageDescription = alt || caption;
-    const fallbackDescription = `${title} 작업 이미지 ${String(index + 1).padStart(2, "0")}`;
-    const accessibleDescription = imageDescription ? `${title} - ${imageDescription}` : fallbackDescription;
-
-    if (isVideo) {
-      media.muted = true;
-      media.autoplay = true;
-      media.loop = true;
-      media.playsInline = true;
-      media.preload = "metadata";
-      media.setAttribute("aria-label", accessibleDescription);
-
-      media.addEventListener("loadedmetadata", () => {
-        figure.dataset.orientation = getMediaOrientation(media.videoWidth, media.videoHeight);
-        figure.classList.remove("is-loading");
-      });
-
-      media.addEventListener("canplay", () => {
-        media.play().catch(() => {});
-      });
-    } else {
-      media.loading = "lazy";
-      media.decoding = "async";
-      media.alt = accessibleDescription;
-
-      media.addEventListener("load", () => {
-        figure.dataset.orientation = getMediaOrientation(media.naturalWidth, media.naturalHeight);
-        figure.classList.remove("is-loading");
-      });
-    }
-
-    media.addEventListener("error", () => {
-      figure.remove();
-      syncModalGalleryItems();
+  if (!stages.length) {
+    items.forEach((item, index) => {
+      modalGalleryList.append(createGalleryItem(item, title, index));
     });
 
-    figure.append(number, media);
+    syncModalGalleryItems();
+    return;
+  }
 
-    if (caption) {
-      const description = document.createElement("figcaption");
-      description.textContent = caption;
-      figure.append(description);
+  let itemIndex = 0;
+
+  stages.forEach((stage, stageIndex) => {
+    const stageItems = items.slice(itemIndex, itemIndex + stage.count);
+
+    if (!stageItems.length && stage.count > 0) {
+      return;
     }
 
-    modalGalleryList.append(figure);
-    media.src = src;
+    const section = document.createElement("section");
+    const caption = document.createElement("header");
+    const copy = document.createElement("div");
+    const stageTitle = document.createElement("h4");
+    const stageDescription = document.createElement("p");
+    const mediaGrid = document.createElement("div");
+    const captionId = `modal-gallery-stage-${stageIndex + 1}`;
+    const descriptionId = `${captionId}-description`;
+
+    section.className = "modal-gallery-stage";
+    section.classList.toggle("is-caption-only", stageItems.length === 0);
+    section.setAttribute("aria-labelledby", captionId);
+    caption.className = "modal-gallery-stage-caption";
+    copy.className = "modal-gallery-stage-copy";
+    stageTitle.id = captionId;
+    stageTitle.textContent = stage.title;
+    stageDescription.id = descriptionId;
+    stageDescription.textContent = stage.description;
+    mediaGrid.className = "modal-gallery-stage-media";
+    mediaGrid.classList.toggle("is-single", stageItems.length === 1);
+
+    copy.append(stageTitle, stageDescription);
+    caption.append(copy);
+    section.append(caption);
+
+    if (stageItems.length) {
+      section.append(mediaGrid);
+    }
+
+    stageItems.forEach((item) => {
+      const accessibleItem = {
+        ...item,
+        alt: item.alt || `${stage.title} - ${stage.description}`,
+      };
+      const figure = createGalleryItem(accessibleItem, title, itemIndex);
+      figure.setAttribute("aria-describedby", descriptionId);
+      mediaGrid.append(figure);
+      itemIndex += 1;
+    });
+
+    modalGalleryList.append(section);
+  });
+
+  items.slice(itemIndex).forEach((item) => {
+    modalGalleryList.append(createGalleryItem(item, title, itemIndex));
+    itemIndex += 1;
   });
 
   syncModalGalleryItems();
@@ -351,6 +442,7 @@ function openDetailModal(item) {
     designStructure,
     designTools,
     gallery,
+    galleryStages,
   } = item.dataset;
   const isDesign = item.hasAttribute("data-design");
   const modalDisplayTitle = displayTitle || title;
@@ -379,7 +471,7 @@ function openDetailModal(item) {
           { term: "\uae30\uc5ec \ub0b4\uc6a9", value: contribution },
         ]
   );
-  renderModalGallery(parseGalleryItems(gallery), modalDisplayTitle);
+  renderModalGallery(parseGalleryItems(gallery), modalDisplayTitle, parseGalleryStages(galleryStages));
 
   modalEmbed.removeAttribute("src");
   modalImage.removeAttribute("src");
