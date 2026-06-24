@@ -428,8 +428,6 @@ function openDetailModal(item) {
   const {
     title,
     category,
-    displayTitle,
-    displayCategory,
     year,
     youtube,
     modalImage: image,
@@ -438,40 +436,24 @@ function openDetailModal(item) {
     description,
     role,
     contribution,
-    designFocus,
-    designStructure,
-    designTools,
     gallery,
     galleryStages,
   } = item.dataset;
-  const isDesign = item.hasAttribute("data-design");
-  const modalDisplayTitle = displayTitle || title;
-  const modalDisplayCategory = displayCategory || category;
 
   lastFocusedElement = document.activeElement;
   currentModalItem = item;
-  modalDialog.dataset.modalType = isDesign ? "design" : "project";
   updateModalMediaLayout(
     Number(mediaWidth) || Number(item.dataset.thumbnailWidth) || 16,
     Number(mediaHeight) || Number(item.dataset.thumbnailHeight) || 9
   );
-  modalTitle.textContent = modalDisplayTitle;
-  modalMeta.textContent = `${modalDisplayCategory} \u00b7 ${year}`;
-  renderModalDetails(
-    isDesign
-      ? [
-          { term: "\uc791\uc5c5 \uac1c\uc694", value: description },
-          { term: "\ub514\uc790\uc778 \ud3ec\uc778\ud2b8", value: designFocus },
-          { term: "\ud398\uc774\uc9c0 \uad6c\uc131", value: designStructure },
-          { term: "\uc0ac\uc6a9 \ub3c4\uad6c", value: designTools },
-        ]
-      : [
-          { term: "\uc18c\uac1c", value: description },
-          { term: "\ub2f4\ub2f9 \uc5ed\ud560", value: role },
-          { term: "\uae30\uc5ec \ub0b4\uc6a9", value: contribution },
-        ]
-  );
-  renderModalGallery(parseGalleryItems(gallery), modalDisplayTitle, parseGalleryStages(galleryStages));
+  modalTitle.textContent = title;
+  modalMeta.textContent = `${category} \u00b7 ${year}`;
+  renderModalDetails([
+    { term: "\uc18c\uac1c", value: description },
+    { term: "\ub2f4\ub2f9 \uc5ed\ud560", value: role },
+    { term: "\uae30\uc5ec \ub0b4\uc6a9", value: contribution },
+  ]);
+  renderModalGallery(parseGalleryItems(gallery), title, parseGalleryStages(galleryStages));
 
   modalEmbed.removeAttribute("src");
   modalImage.removeAttribute("src");
@@ -509,7 +491,6 @@ function closeProjectModal() {
   modalImage.alt = "";
   renderModalGallery([], "");
   updateModalMediaLayout();
-  delete modalDialog.dataset.modalType;
   currentModalItem = null;
   document.body.style.overflow = "";
   lastFocusedElement?.focus();
@@ -531,12 +512,6 @@ document.querySelectorAll("[data-project]").forEach((project) => {
   prepareProjectMedia(project);
   openButton.addEventListener("click", () => {
     openDetailModal(project);
-  });
-});
-
-document.querySelectorAll("[data-design]").forEach((design) => {
-  design.querySelector(".design-open").addEventListener("click", () => {
-    openDetailModal(design);
   });
 });
 
