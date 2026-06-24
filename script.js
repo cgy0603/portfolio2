@@ -1,13 +1,25 @@
 const header = document.querySelector(".site-header");
 const menuButton = document.querySelector(".menu-toggle");
 const navigation = document.querySelector(".site-nav");
+const heroSection = document.querySelector(".hero");
+const backToTopButton = document.querySelector("[data-back-to-top]");
 
 function updateHeader() {
   header.classList.toggle("scrolled", window.scrollY > 20);
+
+  const isPastHero = heroSection.getBoundingClientRect().bottom <= header.offsetHeight;
+  backToTopButton.classList.toggle("is-visible", isPastHero);
+  backToTopButton.setAttribute("aria-hidden", String(!isPastHero));
 }
 
 updateHeader();
 window.addEventListener("scroll", updateHeader, { passive: true });
+window.addEventListener("resize", updateHeader);
+
+backToTopButton.addEventListener("click", () => {
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  window.scrollTo({ top: 0, behavior: prefersReducedMotion ? "auto" : "smooth" });
+});
 
 menuButton.addEventListener("click", () => {
   const isOpen = menuButton.getAttribute("aria-expanded") === "true";
