@@ -1294,7 +1294,7 @@ p {
     min-height: 0;
     display: grid;
     grid-template-columns: 0.8fr 1.2fr;
-    gap: 70px;
+    gap: 40px;
     padding: 52px 58px 60px;
     scrollbar-gutter: stable;
 }
