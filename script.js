@@ -1,15 +1,15 @@
 const header = document.querySelector(".site-header");
 const menuButton = document.querySelector(".menu-toggle");
 const navigation = document.querySelector(".site-nav");
-const heroSection = document.querySelector(".hero");
 const backToTopButton = document.querySelector("[data-back-to-top]");
+const backToTopThreshold = 300;
 
 function updateHeader() {
   header.classList.toggle("scrolled", window.scrollY > 20);
 
-  const isPastHero = heroSection.getBoundingClientRect().bottom <= header.offsetHeight;
-  backToTopButton.classList.toggle("is-visible", isPastHero);
-  backToTopButton.setAttribute("aria-hidden", String(!isPastHero));
+  const shouldShowBackToTop = window.scrollY > backToTopThreshold;
+  backToTopButton.classList.toggle("is-visible", shouldShowBackToTop);
+  backToTopButton.setAttribute("aria-hidden", String(!shouldShowBackToTop));
 }
 
 updateHeader();

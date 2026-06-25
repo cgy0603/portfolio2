@@ -1417,7 +1417,7 @@ p {
 .modal-gallery-stage {
     min-width: 0;
     display: grid;
-    gap: 14px;
+    gap: 24px;
 }
 
 .modal-gallery-stage.is-caption-only {
@@ -1606,44 +1606,64 @@ p {
     align-items: center;
     justify-content: center;
     justify-self: end;
-    overflow: hidden;
-    color: #f7fbff;
-    background-color: #173a69;
-    border: 1px solid #173a69;
-    box-shadow: 0 18px 42px rgba(27, 58, 107, 0.16);
+    overflow: visible;
+    color: #10294f;
+    background-color: var(--blush-dark);
+    border: 1px solid rgba(255, 255, 255, 0.86);
+    box-shadow:
+        0 22px 54px rgba(9, 28, 57, 0.24),
+        0 0 0 8px rgba(90, 167, 255, 0.14);
     border-radius: 50%;
     text-align: center;
     transition:
-        color 0.55s ease-in-out,
-        background-color 0.55s ease-in-out,
-        border-color 0.55s ease-in-out,
-        box-shadow 0.4s ease,
-        transform 0.35s ease;
+        color 0.3s ease,
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
 }
 
 .resume-download::before {
     content: "";
     position: absolute;
-    inset: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.32);
+    inset: -10px;
+    border: 1px solid rgba(23, 58, 105, 0.24);
     border-radius: 50%;
-    transition: border-color 0.55s ease-in-out;
+    opacity: 0.72;
+    pointer-events: none;
+    transition:
+        border-color 0.3s ease,
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+.resume-download::after {
+    content: "";
+    position: absolute;
+    inset: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.46);
+    border-radius: 50%;
+    pointer-events: none;
+    transition:
+        border-color 0.3s ease,
+        inset 0.3s ease;
 }
 
 .resume-download span,
-.resume-download strong {
+.resume-download strong,
+.resume-download-icon {
     position: relative;
     z-index: 1;
 }
 
 .resume-download span {
     margin-bottom: 10px;
-    color: rgba(255, 255, 255, 0.62);
+    color: rgba(16, 41, 79, 0.68);
     font-size: 16px;
     font-weight: 400;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    transition: color 0.55s ease-in-out;
+    transition: color 0.3s ease;
 }
 
 .resume-download strong {
@@ -1652,22 +1672,63 @@ p {
     font-weight: 500;
 }
 
+.resume-download-icon {
+    width: 34px;
+    height: 34px;
+    margin-top: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.7;
+    animation: resume-download-float 2.4s ease-in-out infinite;
+    transition: transform 0.3s ease;
+}
+
 .resume-download:hover,
 .resume-download:focus-visible {
-    color: var(--ink);
-    background-color: #f4f9ff;
-    border-color: rgba(27, 58, 107, 0.3);
-    transform: translateY(-7px);
+    color: var(--white);
+    background-color: #173a69;
+    border-color: rgba(255, 255, 255, 0.96);
+    box-shadow:
+        0 28px 62px rgba(9, 28, 57, 0.28),
+        0 0 0 10px rgba(90, 167, 255, 0.2);
+    transform: translateY(-8px) scale(1.02);
 }
 
 .resume-download:hover::before,
 .resume-download:focus-visible::before {
-    border-color: rgba(27, 58, 107, 0.28);
+    border-color: rgba(23, 58, 105, 0.44);
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.resume-download:hover::after,
+.resume-download:focus-visible::after {
+    inset: 16px;
+    border-color: rgba(255, 255, 255, 0.34);
 }
 
 .resume-download:hover span,
 .resume-download:focus-visible span {
-    color: rgba(27, 58, 107, 0.62);
+    color: rgba(255, 255, 255, 0.68);
+}
+
+.resume-download:hover .resume-download-icon,
+.resume-download:focus-visible .resume-download-icon {
+    animation: none;
+    transform: translateY(5px);
+}
+
+@keyframes resume-download-float {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(6px);
+    }
 }
 
 .back-to-top {
@@ -1680,20 +1741,22 @@ p {
     display: grid;
     place-items: center;
     padding: 0;
-    color: var(--ink);
-    background: rgba(244, 249, 255, 0.92);
-    border: 1px solid rgba(27, 58, 107, 0.24);
+    color: #173a69;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(27, 58, 107, 0.22);
     border-radius: 50%;
-    box-shadow: 0 10px 28px rgba(9, 28, 57, 0.16);
+    box-shadow: 0 12px 28px rgba(9, 28, 57, 0.18);
+    backdrop-filter: blur(12px);
     cursor: pointer;
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
-    transform: translateY(12px) scale(0.92);
+    transform: translateY(12px) scale(0.94);
     transition:
         color 0.25s ease,
         background-color 0.25s ease,
         border-color 0.25s ease,
+        box-shadow 0.25s ease,
         opacity 0.3s ease,
         transform 0.3s ease,
         visibility 0.3s ease;
@@ -1709,19 +1772,16 @@ p {
 .back-to-top:hover,
 .back-to-top:focus-visible {
     color: var(--white);
-    background: var(--ink);
-    border-color: var(--ink);
+    background: #173a69;
+    border-color: #173a69;
+    box-shadow: 0 16px 32px rgba(9, 28, 57, 0.24);
     transform: translateY(-3px) scale(1);
 }
 
 .back-to-top svg {
-    width: 21px;
-    height: 21px;
-    fill: none;
-    stroke: currentColor;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-width: 1.8;
+    width: 18px;
+    height: 22px;
+    fill: currentColor;
 }
 
 footer {
@@ -2123,9 +2183,9 @@ footer {
 
     .back-to-top {
         right: 18px;
-        bottom: 18px;
-        width: 46px;
-        height: 46px;
+        bottom: 22px;
+        width: 48px;
+        height: 48px;
     }
 
     .resume-download {
@@ -2235,6 +2295,8 @@ footer {
     *,
     *::before,
     *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
 }
