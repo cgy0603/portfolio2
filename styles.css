@@ -1013,6 +1013,26 @@ p {
         transform 0.3s ease;
 }
 
+.project-order-1 {
+    order: 1;
+}
+
+.project-order-2 {
+    order: 2;
+}
+
+.project-order-3 {
+    order: 3;
+}
+
+.project-order-4 {
+    order: 4;
+}
+
+.project-order-5 {
+    order: 5;
+}
+
 .project-card:hover {
     border-color: rgba(27, 58, 107, 0.16);
     box-shadow: 0 10px 24px rgba(27, 58, 107, 0.07);
