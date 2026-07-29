@@ -497,35 +497,53 @@ em {
     line-height: 1.6;
 }
 .workflow {
-    background: var(--pale);
+    background: var(--paper);
+}
+.workflow .section-title {
+    grid-template-columns: 1fr 1fr;
 }
 .workflow-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
     margin-top: 80px;
-    border-top: 1px solid var(--line);
-    border-left: 1px solid var(--line);
 }
 .workflow-grid article {
     min-height: 310px;
     padding: 42px;
-    border-right: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.7);
+    border-top: 5px solid var(--accent);
+    box-shadow: 0 12px 34px rgba(27, 58, 107, 0.06);
+    transition:
+        background-color 0.3s,
+        box-shadow 0.3s,
+        transform 0.3s;
+}
+.workflow-grid article:hover {
+    background: #fff;
+    box-shadow: 0 20px 44px rgba(27, 58, 107, 0.12);
+    transform: translateY(-6px);
 }
 .workflow-grid span {
-    color: var(--muted);
+    color: var(--accent);
+    font-family: var(--display);
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
 }
 .workflow-grid h3 {
-    margin: 35px 0 16px;
+    margin: 32px 0 16px;
     font-family: var(--serif);
-    font-size: 32px;
-    font-weight: 600;
+    font-size: 36px;
+    font-weight: 700;
 }
 .workflow-grid p {
     max-width: 500px;
     margin: 0;
     color: var(--muted);
     line-height: 1.8;
+    word-break: keep-all;
+    text-wrap: pretty;
 }
 .workflow-grid small {
     display: block;
@@ -837,6 +855,7 @@ footer {
     }
     .workflow-grid article {
         min-height: 0;
+        padding: 30px;
     }
     .profile-strip {
         grid-template-columns: 1fr;
@@ -980,11 +999,11 @@ footer {
     }
     .workflow-grid article {
         min-height: 248px;
-        padding: 34px;
+        padding: 29px;
     }
     .workflow-grid h3 {
-        margin: 28px 0 13px;
-        font-size: 26px;
+        margin: 32px 0 14px;
+        font-size: 29px;
     }
     .profile-strip {
         margin-top: 48px;
