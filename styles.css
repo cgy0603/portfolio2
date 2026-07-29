@@ -79,7 +79,7 @@ button {
     gap: 12px;
     min-width: 0;
     color: currentColor;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 700;
     letter-spacing: 0;
 }
@@ -126,14 +126,14 @@ button {
 }
 
 .brand-name {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 800;
     letter-spacing: 0.16em;
 }
 
 .brand-role {
     color: rgba(255, 255, 255, 0.58);
-    font-size: 10px;
+    font-size: 16px;
     font-weight: 700;
     letter-spacing: 0.18em;
 }
@@ -251,7 +251,7 @@ button {
     align-items: center;
     margin: 0 0 32px;
     color: rgba(255, 255, 255, 0.72);
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
     letter-spacing: 0.16em;
     text-transform: uppercase;
@@ -404,7 +404,7 @@ p {
 .hero-highlights dt {
     margin-bottom: 7px;
     color: rgba(255, 255, 255, 0.52);
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -525,7 +525,7 @@ p {
     color: rgba(255, 255, 255, 0.86);
     background: rgba(9, 28, 57, 0.7);
     border: 1px solid rgba(255, 255, 255, 0.22);
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -539,7 +539,7 @@ p {
     right: 28px;
     margin: 0;
     color: rgba(255, 255, 255, 0.68);
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -706,14 +706,14 @@ p {
     display: block;
     margin-top: 6px;
     color: var(--muted);
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.6;
     word-break: keep-all;
 }
 
 .history-item span {
     color: var(--muted);
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 400;
     font-variant-numeric: tabular-nums;
     text-align: right;
@@ -753,7 +753,7 @@ p {
 
 .license-list time {
     color: var(--muted);
-    font-size: 15px;
+    font-size: 16px;
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
 }
@@ -796,7 +796,7 @@ p {
     gap: 10px;
     align-items: center;
     color: var(--muted);
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 400;
     line-height: 1.45;
     text-align: center;
@@ -901,7 +901,7 @@ p {
     gap: 10px;
     align-items: center;
     color: var(--muted);
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
 }
 
@@ -920,7 +920,7 @@ p {
     gap: 7px;
     align-items: baseline;
     color: var(--muted);
-    font-size: 14px;
+    font-size: 16px;
     font-variant-numeric: tabular-nums;
 }
 
@@ -947,7 +947,7 @@ p {
     background: var(--ink);
     border: 1px solid var(--ink);
     border-radius: 2px;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     cursor: pointer;
     transition:
@@ -1069,7 +1069,7 @@ p {
     border-radius: 999px;
     box-shadow: 0 5px 16px rgba(27, 58, 107, 0.12);
     font-family: var(--font-main);
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 600;
     letter-spacing: 0.04em;
     line-height: 1;
@@ -1162,7 +1162,7 @@ p {
     margin-top: 0;
     padding: 18px 18px 0;
     color: var(--muted);
-    font-size: 14px;
+    font-size: 16px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
 }
@@ -1211,7 +1211,7 @@ p {
     background: var(--paper);
     border: 1px solid rgba(27, 58, 107, 0.18);
     border-radius: 7px;
-    font-size: 11px;
+    font-size: 16px;
     font-weight: 600;
     letter-spacing: -0.04em;
 }
@@ -1381,7 +1381,7 @@ p {
     background: var(--paper);
     border: 1px solid rgba(27, 58, 107, 0.24);
     border-radius: 999px;
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 600;
     letter-spacing: 0.04em;
     line-height: 1;
@@ -1452,7 +1452,7 @@ p {
 .modal-gallery-heading p {
     margin: 0;
     color: var(--muted);
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -1573,7 +1573,7 @@ p {
     place-items: center;
     color: var(--white);
     background: rgba(9, 28, 57, 0.82);
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 700;
     font-variant-numeric: tabular-nums;
     letter-spacing: 0.08em;
@@ -1851,7 +1851,7 @@ footer {
     padding: 30px 0;
     color: rgba(255, 255, 255, 0.62);
     background: var(--ink);
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.6;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -1968,7 +1968,7 @@ footer {
     }
 
     .brand-name {
-        font-size: 12px;
+        font-size: 16px;
         letter-spacing: 0.12em;
     }
 
@@ -2058,7 +2058,7 @@ footer {
     .hero-eyebrow {
         gap: 14px;
         margin-bottom: 28px;
-        font-size: 11px;
+        font-size: 16px;
         letter-spacing: 0.14em;
     }
 
@@ -2101,7 +2101,7 @@ footer {
         min-width: 0;
         min-height: 50px;
         padding: 0 14px;
-        font-size: 15px;
+        font-size: 16px;
         letter-spacing: 0.01em;
     }
 
@@ -2120,7 +2120,7 @@ footer {
     }
 
     .hero-highlights dd {
-        font-size: 15px;
+        font-size: 16px;
     }
 
     .hero-showcase {
@@ -2233,7 +2233,7 @@ footer {
         height: 46px;
         gap: 6px;
         padding: 0 8px;
-        font-size: 14px;
+        font-size: 16px;
     }
 
     .card-track {
@@ -2299,7 +2299,7 @@ footer {
 
     .modal-gallery-heading p {
         margin-bottom: 7px;
-        font-size: 12px;
+        font-size: 16px;
     }
 
     .modal-gallery-list {
