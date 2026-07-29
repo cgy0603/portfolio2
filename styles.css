@@ -1053,6 +1053,28 @@ p {
         box-shadow 0.3s ease;
 }
 
+.card-work-type {
+    position: absolute;
+    z-index: 4;
+    top: 16px;
+    right: 16px;
+    display: inline-flex;
+    align-items: center;
+    min-height: 29px;
+    padding: 5px 11px;
+    color: var(--ink);
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(27, 58, 107, 0.22);
+    border-radius: 999px;
+    box-shadow: 0 5px 16px rgba(27, 58, 107, 0.12);
+    font-family: var(--font-main);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    backdrop-filter: blur(8px);
+}
+
 .card-image[data-media-orientation="portrait"],
 .card-image[data-media-orientation="square"] {
     background-color: #dcecff;
@@ -1346,6 +1368,26 @@ p {
     font-size: 16px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
+}
+
+.modal-work-type {
+    display: inline-flex;
+    align-items: center;
+    min-height: 31px;
+    margin-bottom: 16px;
+    padding: 6px 12px;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid rgba(27, 58, 107, 0.24);
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    line-height: 1;
+}
+
+.modal-work-type[hidden] {
+    display: none;
 }
 
 .modal-heading h2 {

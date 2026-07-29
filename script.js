@@ -156,6 +156,7 @@ const modalImage = projectModal.querySelector("img");
 const mediaPlaceholder = projectModal.querySelector(".media-placeholder");
 const modalTitle = projectModal.querySelector("#modal-title");
 const modalMeta = projectModal.querySelector(".modal-meta");
+const modalWorkType = projectModal.querySelector(".modal-work-type");
 const modalDetails = projectModal.querySelector(".modal-details");
 const modalGallery = projectModal.querySelector(".modal-gallery");
 const modalGalleryList = projectModal.querySelector(".modal-gallery-list");
@@ -440,6 +441,7 @@ function openDetailModal(item) {
   const {
     title,
     category,
+    workType,
     year,
     youtube,
     modalImage: image,
@@ -460,6 +462,8 @@ function openDetailModal(item) {
   );
   modalTitle.textContent = title;
   modalMeta.textContent = `${category} \u00b7 ${year}`;
+  modalWorkType.textContent = workType;
+  modalWorkType.hidden = !workType;
   renderModalDetails([
     { term: "\uc18c\uac1c", value: description },
     { term: "\ub2f4\ub2f9 \uc5ed\ud560", value: role },
@@ -520,6 +524,14 @@ modalImage.addEventListener("error", () => {
 
 document.querySelectorAll("[data-project]").forEach((project) => {
   const openButton = project.querySelector(".project-open");
+  const workType = project.dataset.workType;
+
+  if (workType) {
+    const badge = document.createElement("span");
+    badge.className = "card-work-type";
+    badge.textContent = workType;
+    openButton.append(badge);
+  }
 
   prepareProjectMedia(project);
   openButton.addEventListener("click", () => {
