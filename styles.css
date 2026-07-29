@@ -278,6 +278,7 @@ em {
 .hero-principles dd {
     margin: 0;
     font-weight: 600;
+    word-break: keep-all;
 }
 .viewpoint {
     background: var(--paper);
@@ -946,12 +947,15 @@ footer {
         padding-inline: 20px;
     }
     .hero-principles {
-        width: min(656px, 100%);
+        width: min(760px, 100%);
         margin-top: 62px;
     }
     .hero-principles div {
         grid-template-columns: 29px 1fr;
         padding-top: 16px;
+    }
+    .hero-principles dd {
+        white-space: nowrap;
     }
     .viewpoint-heading,
     .section-title {
