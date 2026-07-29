@@ -1,573 +1,214 @@
 <!doctype html>
 <html lang="ko">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="영상 편집자이자 모션 디자이너 최영민의 포트폴리오" />
-        <title>최영민 포트폴리오 | 영상 편집 · 모션 디자인</title>
-        <link rel="icon" type="image/svg+xml" href="./assets/icons/favicon.svg" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600&family=Noto+Serif+KR:wght@400;500;600&display=swap"
-            rel="stylesheet"
-        />
-        <link rel="stylesheet" href="./styles.css" />
-    </head>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="영상 편집자·모션 디자이너 최영민 포트폴리오 구성 시안">
+  <title>최영민 | Portfolio Concept</title>
+  <link rel="icon" href="./assets/icons/favicon.svg">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="페이지 처음으로">
+      <svg class="brand-mark" viewBox="0 0 44 44" aria-hidden="true" focusable="false">
+        <rect class="brand-mark-frame" x="1.5" y="1.5" width="41" height="41" rx="7"></rect>
+        <path class="brand-mark-line" d="M10.5 12.5 22 24l11.5-11.5"></path>
+        <path class="brand-mark-line" d="M10.5 32V19.5L22 31l11.5-11.5V32"></path>
+        <path class="brand-mark-accent" d="M30 8.5h6v6"></path>
+      </svg>
+      <span class="brand-wordmark" aria-hidden="true">
+        <strong>YOUNGMIN</strong>
+        <small>VIDEO MOTION</small>
+      </span>
+    </a>
+    <nav aria-label="주요 메뉴">
+      <a href="#viewpoint">영상에 대한 생각</a>
+      <a href="#projects">프로젝트</a>
+      <a href="#workflow">작업 방식</a>
+      <a href="#contact">연락처</a>
+    </nav>
+    <button class="menu" type="button" aria-expanded="false" aria-label="메뉴 열기"><span></span><span></span></button>
+  </header>
 
-    <body>
-        <header class="site-header">
-            <div class="shell header-inner">
-                <a class="brand" href="#home" aria-label="최영민 포트폴리오 홈으로 이동">
-                    <svg class="brand-mark" viewBox="0 0 44 44" aria-hidden="true" focusable="false">
-                        <rect class="brand-mark-frame" x="1.5" y="1.5" width="41" height="41" rx="7" />
-                        <path class="brand-mark-line" d="M10.5 12.5 22 24l11.5-11.5" />
-                        <path class="brand-mark-line" d="M10.5 32V19.5L22 31l11.5-11.5V32" />
-                        <path class="brand-mark-accent" d="M30 8.5h6v6" />
-                    </svg>
-                    <span class="brand-wordmark" aria-hidden="true">
-                        <span class="brand-name">YOUNGMIN</span>
-                        <span class="brand-role">VIDEO MOTION</span>
-                    </span>
-                </a>
-                <button class="menu-toggle" type="button" aria-expanded="false" aria-label="메뉴 열기">
-                    <span></span>
-                    <span></span>
-                </button>
-                <nav class="site-nav" aria-label="주요 메뉴">
-                    <a href="#about">소개</a>
-                    <a href="#project">프로젝트</a>
-                    <a href="#contact">연락처</a>
-                </nav>
-            </div>
-        </header>
+  <main id="top">
+    <section class="hero">
+      <div class="hero-image" aria-hidden="true"></div>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <p class="eyebrow reveal">VIDEO EDITOR · MOTION DESIGNER</p>
+        <h1 class="reveal">장면의 목적을 읽고,<br><em>리듬으로 연결합니다.</em></h1>
+        <p class="hero-copy reveal">
+          컷의 흐름과 움직임, 사운드를 연결해<br>
+          시청자가 자연스럽게 감정과 정보를 따라가는 영상을 만듭니다.
+        </p>
+        <div class="hero-actions reveal">
+          <a class="button primary" href="#projects">프로젝트 살펴보기</a>
+          <a class="button ghost" href="#workflow">나의 작업 방식</a>
+        </div>
+        <dl class="hero-principles reveal">
+          <div><dt>01</dt><dd>의도를 먼저 이해합니다</dd></div>
+          <div><dt>02</dt><dd>리듬으로 시선을 연결합니다</dd></div>
+          <div><dt>03</dt><dd>디테일까지 마무리합니다</dd></div>
+        </dl>
+      </div>
+    </section>
 
-        <main>
-            <section class="hero section" id="home">
-                <div class="hero-backdrop" data-image="./assets/images/canva/thumbnail-02.png" aria-hidden="true"></div>
-                <div class="shell hero-grid">
-                    <div class="hero-copy reveal">
-                        <p class="hero-eyebrow">
-                            <span>Video Editor</span>
-                            <span>Motion Designer</span>
-                        </p>
-                        <h1 class="hero-title">
-                            <strong class="hero-title-main">장면의 리듬을<br />선명하게</strong>
-                        </h1>
-                        <p class="hero-description">
-                            기획 의도를 빠르게 읽고 편집, 모션, 사운드를 연결해
-                            <span class="text-keep">오래 남는 영상 흐름을 만듭니다.</span>
-                        </p>
-                        <div class="hero-actions">
-                            <a class="hero-cta hero-cta-primary" href="#project">
-                                <span>프로젝트 보기</span>
-                                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"></svg>
-                            </a>
-                            <a
-                                class="hero-cta hero-cta-secondary"
-                                href="./assets/documents/resume.pdf"
-                                download="최영민_이력서.pdf"
-                                aria-label="최영민 이력서 PDF 다운로드"
-                            >
-                                <span>이력서 다운로드</span>
-                                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                                    <path d="M12 3v12m0 0 5-5m-5 5-5-5M5 20h14" />
-                                </svg>
-                            </a>
-                        </div>
-                        <dl class="hero-highlights" aria-label="작업 강점">
-                            <div>
-                                <dt>Focus</dt>
-                                <dd>편집 · 모션 · 촬영</dd>
-                            </div>
-                            <div>
-                                <dt>Workflow</dt>
-                                <dd>Pr · Ae · AI</dd>
-                            </div>
-                        </dl>
-                    </div>
-                    <div class="hero-showcase reveal" aria-label="대표 프로젝트 미리보기">
-                        <a
-                            class="hero-frame hero-frame-wide image-slot"
-                            href="#project"
-                            data-image="./assets/images/canva/thumbnail.jpg"
-                            aria-label="Canva Motion Kit 대표 프로젝트 보기"
-                        >
-                            <span class="image-label">PROJECT 01</span>
-                            <span class="hero-frame-caption">Canva Motion Kit</span>
-                        </a>
-                        <a
-                            class="hero-frame hero-frame-portrait image-slot"
-                            href="#project"
-                            data-image="./assets/images/project-01.png"
-                            aria-label="당수 대표 프로젝트 보기"
-                        >
-                            <span class="image-label">PROJECT 01</span>
-                            <span class="hero-frame-caption">당수</span>
-                        </a>
-                        <p class="hero-ribbon">Rhythm · Cut · Motion</p>
-                    </div>
-                </div>
-            </section>
+    <section class="viewpoint section" id="viewpoint">
+      <div class="shell">
+        <p class="section-index reveal">01 · VIEWPOINT</p>
+        <div class="viewpoint-heading">
+          <h2 class="reveal">영상을 판단하는<br><em>세 가지 기준</em></h2>
+          <p class="viewpoint-lead reveal">
+            화려한 효과보다 전달하려는 의도가 먼저 보여야 한다고 생각합니다.
+            <span>컷과 움직임, 사운드는 그 의도를 분명하게 만드는 도구입니다.</span>
+          </p>
+        </div>
+        <div class="principle-grid">
+          <article class="principle-card reveal">
+            <span>01</span><strong>의도</strong>
+            <p>시청자가 무엇을 느끼고 이해해야 하는지 먼저 정합니다.</p>
+          </article>
+          <article class="principle-card reveal">
+            <span>02</span><strong>리듬</strong>
+            <p>컷의 길이와 전환 타이밍으로 시선의 흐름을 만듭니다.</p>
+          </article>
+          <article class="principle-card reveal">
+            <span>03</span><strong>완성도</strong>
+            <p>사운드와 색감까지 확인해 하나의 분위기로 연결합니다.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-            <section class="about section" id="about">
-                <div class="shell">
-                    <div class="section-heading reveal">
-                        <h2>소개</h2>
-                    </div>
-                    <div class="about-grid">
-                        <div class="about-intro reveal">
-                            <p class="about-lead">기획 의도를 읽고, 촬영과 후반 작업으로 완성합니다.</p>
-                            <p class="about-summary">
-                                영상 편집과 모션 디자인을 중심으로 촬영 현장의 흐름을 이해하고, 장면의 의도를
-                                결과물로 연결하는 최영민입니다. 책임감 있는 협업과 세심한 후반 작업으로 완성도 높은
-                                영상을 만듭니다.
-                            </p>
-                        </div>
-                        <div class="about-copy reveal">
-                            <dl class="profile-list">
-                                <div>
-                                    <dt>이름</dt>
-                                    <dd>최영민</dd>
-                                </div>
-                                <div>
-                                    <dt>주요 분야</dt>
-                                    <dd>영상 편집 · 모션 디자인 · 촬영</dd>
-                                </div>
-                            </dl>
-                            <div class="about-history" aria-label="학력 경력 교육 자격">
-                                <section class="history-group">
-                                    <h3>학력</h3>
-                                    <div class="history-item">
-                                        <div>
-                                            <p>대구가톨릭대학교 · 언론영상학과 졸업</p>
-                                        </div>
-                                        <span>2024. 02</span>
-                                    </div>
-                                </section>
-                                <section class="history-group">
-                                    <h3>경험</h3>
-                                    <div class="history-item">
-                                        <div>
-                                            <p>TBC · 학과 연계 근로장학생</p>
-                                            <small>SNS 관리/FD/현장 조연출</small>
-                                        </div>
-                                        <span>2023.06 ~ 2023.08</span>
-                                    </div>
-                                </section>
-                                <section class="history-group">
-                                    <h3>교육</h3>
-                                    <div class="history-item">
-                                        <div>
-                                            <p>그린컴퓨터아트학원</p>
-                                            <small
-                                                >멀티미디어 디지털 영상편집(프리미어프로, 에프터이펙트, 블렌더)</small
-                                            >
-                                        </div>
-                                        <span>2026.02 ~ 2026.08</span>
-                                    </div>
-                                </section>
-                                <section class="history-group">
-                                    <h3>자격</h3>
-                                    <ul class="license-list">
-                                        <li>
-                                            <span>컴퓨터활용능력 2급</span>
-                                            <time datetime="2024-11">2024.11</time>
-                                        </li>
-                                        <li>
-                                            <span>1종보통운전면허</span>
-                                            <time datetime="2016-12">2016.12</time>
-                                        </li>
-                                    </ul>
-                                </section>
-                            </div>
-                            <div class="about-skills">
-                                <h3>사용 도구</h3>
-                                <ul class="tool-list" aria-label="사용 가능한 제작 도구">
-                                    <li class="tool-item">
-                                        <span class="tool-icon adobe-icon" aria-hidden="true">Pr</span>
-                                        <span>Premiere Pro</span>
-                                    </li>
-                                    <li class="tool-item">
-                                        <span class="tool-icon adobe-icon" aria-hidden="true">Ae</span>
-                                        <span>After Effects</span>
-                                    </li>
-                                    <li class="tool-item">
-                                        <span class="tool-icon adobe-icon" aria-hidden="true">Ps</span>
-                                        <span>Photoshop</span>
-                                    </li>
-                                    <li class="tool-item">
-                                        <span class="tool-icon adobe-icon" aria-hidden="true">Ai</span>
-                                        <span>Illustrator</span>
-                                    </li>
-                                    <li class="tool-item">
-                                        <span class="tool-icon ai-icon" aria-hidden="true">
-                                            <img src="./assets/icons/chatgpt-navy.png" alt="" />
-                                        </span>
-                                        <span>ChatGPT</span>
-                                    </li>
-                                    <li class="tool-item">
-                                        <span class="tool-icon ai-icon gemini-icon" aria-hidden="true">
-                                            <svg viewBox="0 0 48 48">
-                                                <path
-                                                    d="M24 6.5C25.8 16.3 31.7 22.2 41.5 24 31.7 25.8 25.8 31.7 24 41.5 22.2 31.7 16.3 25.8 6.5 24 16.3 22.2 22.2 16.3 24 6.5Z"
-                                                />
-                                            </svg>
-                                        </span>
-                                        <span>Gemini</span>
-                                    </li>
-                                    <li class="tool-item">
-                                        <span class="tool-icon ai-icon" aria-hidden="true">
-                                            <img src="./assets/icons/kling-navy.png" alt="" />
-                                        </span>
-                                        <span>Kling</span>
-                                    </li>
-                                    <li class="tool-item">
-                                        <span class="tool-icon brand-tool-icon html-icon" aria-hidden="true">
-                                            <svg viewBox="0 0 48 48">
-                                                <path d="M8 4h32l-3 34-13 4-13-4L8 4Z" />
-                                                <path
-                                                    d="M16 14h17l-.5 5H21l.4 4h10.7l-1 11L24 36l-7.1-2-.5-6h5l.2 2.2 2.4.7 2.5-.7.3-3H16.1L14.8 14Z"
-                                                />
-                                            </svg>
-                                        </span>
-                                        <span>HTML</span>
-                                    </li>
-                                    <li class="tool-item">
-                                        <span class="tool-icon brand-tool-icon" aria-hidden="true">
-                                            <svg viewBox="0 0 24 24">
-                                                <path
-                                                    d="M15 22v-3.9c.04-1-.35-1.96-1.1-2.6 3.6-.4 7.4-1.8 7.4-8a6.2 6.2 0 0 0-1.65-4.3A5.8 5.8 0 0 0 19.5 1S18.2.6 15 2.65a15 15 0 0 0-6 0C5.8.6 4.5 1 4.5 1a5.8 5.8 0 0 0-.15 2.2A6.2 6.2 0 0 0 2.7 7.5c0 6.2 3.8 7.6 7.4 8-.74.63-1.13 1.57-1.1 2.55V22"
-                                                />
-                                                <path d="M9 19c-3 .9-3-1.5-4.2-2" />
-                                            </svg>
-                                        </span>
-                                        <span>GitHub</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="projects section" id="project">
-                <div class="shell">
-                    <div class="section-heading row-heading reveal">
-                        <h2>프로젝트</h2>
-                    </div>
-                    <div class="card-track" data-track="projects">
-                        <article
-                            class="project-card reveal project-order-1"
-                            data-project
-                            data-title="Canva Motion Kit"
-                            data-category="가상 서비스 광고 · 모션그래픽"
-                            data-work-type="개인 작업"
-                            data-year="2026"
-                            data-youtube="https://youtu.be/tXYugbgY8Vc"
-                            data-description="디자인을 분석해 어울리는 모션 프리셋을 추천하고, 선택한 효과를 즉시 미리 볼 수 있도록 구성한 가상의 Canva Motion Kit 서비스 광고."
-                            data-motivation="‘만약 이런 기능이 있다면 어떨까?’라는 아이디어에 흥미를 느껴, 평소 자주 사용하는 Canva의 가상 기능을 직접 기획하고 구현하고자 시작한 개인 프로젝트."
-                            data-intention="정적인 디자인을 모션 콘텐츠로 전환하고, 완성 결과물을 다양한 플랫폼 포맷으로 확장하는 기능을 실제 Canva 서비스처럼 직관적으로 표현."
-                            data-role="개인 작업 · 기획 · UX/UI 디자인 · 모션그래픽 · 편집 · 사운드"
-                            data-contribution="서비스 콘셉트와 사용자 흐름을 설계하고, 포스터 분석부터 모션 추천·선택·미리보기로 이어지는 인터페이스를 디자인했습니다. 화면 전환과 인터랙션 모션, 영상 편집과 사운드까지 전 과정을 단독으로 완성했습니다."
-                            data-gallery="./assets/images/canva/scene-analysis.mp4||./assets/images/canva/scene-layer-structure.mp4||./assets/images/canva/scene-motion-presets.mp4||./assets/images/canva/scene-multi-format.mp4||./assets/images/canva/premiere-sound-edit.png"
-                            data-gallery-stages="1|디자인 요소 분석|정적인 디자인을 구성하는 텍스트, 이미지, 도형과 배경을 AI가 개체별로 인식하고 분석하는 과정 시각화||1|레이어 구조 시각화|분석된 개체를 앞뒤 레이어로 분리하고, Canva가 판단한 디자인 구조를 공간감 있는 화면으로 직관적으로 표현||1|모션 프리셋 비교 및 선택|디자인에 어울리는 네 가지 모션을 순차적으로 비교한 뒤, 사용자가 원하는 프리셋을 선택하고 다음 단계로 이동하는 흐름 구성||1|멀티 포맷 확장 및 활용|하나의 디자인을 9:16, 1:1, 16:9 포맷으로 재구성하고, 무드등을 포함한 다양한 콘텐츠 사례로 확장해 기능의 활용성과 범용성을 표현||1|편집 및 사운드 구성|Premiere Pro에서 장면의 전개와 모션 타이밍에 맞춰 배경음과 효과음을 배치하고, 기능 전환과 인터랙션의 반응이 명확하게 느껴지도록 전체 사운드 흐름 구성"
-                        >
-                            <button
-                                class="card-image image-slot project-open"
-                                type="button"
-                                data-image="./assets/images/canva/project-thumbnail.jpg"
-                                aria-label="Canva Motion Kit 프로젝트 상세 보기"
-                            >
-                                <span class="image-label">프로젝트 01 미리보기</span>
-                                <span class="thumbnail-play">▶</span>
-                            </button>
-                            <div class="card-meta">
-                                <p>기획 · UI 디자인 · 모션 · 편집</p>
-                                <span>2026</span>
-                            </div>
-                            <h3>Canva Motion Kit</h3>
-                            <div class="card-tools" aria-label="사용 도구">
-                                <span class="card-tool-icon" title="Premiere Pro" aria-label="Premiere Pro">Pr</span>
-                                <span class="card-tool-icon" title="After Effects" aria-label="After Effects">Ae</span>
-                                <span class="card-tool-icon" title="Photoshop" aria-label="Photoshop">Ps</span>
-                                <span class="card-tool-icon card-tool-image" title="ChatGPT" aria-label="ChatGPT">
-                                    <img src="./assets/icons/chatgpt-navy.png" alt="" />
-                                </span>
-                            </div>
-                        </article>
-                        <article
-                            class="project-card reveal project-order-5"
-                            data-project
-                            data-title="식물나라"
-                            data-category="브랜드 영상 · 촬영"
-                            data-work-type="팀 프로젝트"
-                            data-year="2026"
-                            data-youtube="https://youtu.be/b7sJIi4cbWY"
-                            data-description="식물나라 제주 탄산수 클렌징 시리즈의 클렌징폼, 아이리무버, 클렌징밤을 촬영해 완성한 브랜드 영상 팀 프로젝트."
-                            data-role="촬영 현장 조연출 · 스크립터 · DIT · 클렌징폼 편집"
-                            data-contribution="촬영 현장에서 조연출과 스크립터 역할을 수행하고, 슬레이트와 테이크 기록을 기준으로 촬영본을 정리·분류해 편집용 파일을 관리하는 DIT 업무를 담당. 후반 작업에서는 분담된 클렌징폼 파트의 편집, 색보정, 음악 선정 및 효과음 작업을 맡아 완성."
-                            data-gallery="./assets/images/shingmulnara/on-set-assistant-directing.jpg||./assets/images/shingmulnara/on-set-script-supervision.jpg||./assets/images/shingmulnara/final-still-01.jpg||./assets/images/shingmulnara/final-still-02.jpg||./assets/images/shingmulnara/final-still-03.jpg||./assets/images/shingmulnara/final-still-04.jpg||./assets/images/shingmulnara/highlight-01.mp4||./assets/images/shingmulnara/highlight-02.mp4||./assets/images/shingmulnara/premiere-color-workspace.png"
-                            data-gallery-stages="2|촬영 현장 운영|촬영 과정에서 조연출로 장면에 필요한 현장 효과를 직접 구현하고 촬영 세팅을 지원했으며, 스크립터로 슬레이트와 테이크를 관리||4|클렌징폼 비주얼 구성|물방울, 수면의 파동, 수중 기포와 제형 매크로 장면을 조합해 클렌징폼의 청량함과 부드러운 사용감을 시각적으로 구성||2|컷 편집 및 리듬|촬영본 중 담당 파트인 클렌징폼 장면을 선별하고, 제품과 물의 움직임이 자연스럽게 이어지도록 컷의 흐름과 템포를 구성||1|DIT 및 후반 작업|스크립터 기록을 기준으로 촬영본을 정리·분류하고 편집용 파일을 관리한 뒤, Premiere Pro에서 편집과 색보정, 음악 선정 및 효과음 배치로 클렌징폼 파트를 완성"
-                        >
-                            <button
-                                class="card-image image-slot project-open"
-                                type="button"
-                                data-image="./assets/images/shingmulnara/thumbnail.png"
-                                aria-label="식물나라 프로젝트 상세 보기"
-                            >
-                                <span class="image-label">프로젝트 05 미리보기</span>
-                                <span class="thumbnail-play">▶</span>
-                            </button>
-                            <div class="card-meta">
-                                <p>조연출 · 스크립터 · DIT · 편집</p>
-                                <span>2026</span>
-                            </div>
-                            <h3>식물나라</h3>
-                            <div class="card-tools" aria-label="사용 도구">
-                                <span class="card-tool-icon" title="Premiere Pro" aria-label="Premiere Pro">Pr</span>
-                            </div>
-                        </article>
-                        <article
-                            class="project-card reveal project-order-3"
-                            data-project
-                            data-title="당수"
-                            data-category="건강 인식 개선 캠페인 · 모션그래픽"
-                            data-work-type="팀 프로젝트"
-                            data-year="2026"
-                            data-youtube="https://youtube.com/shorts/ITI_qUxcyHM"
-                            data-description="영국의 설탕세 규제를 피해 도망치던 '당수'가 한국의 제도를 마주한 뒤, 갈등 끝에 자의로 당을 거부(개과천선)하고 건강하게 재탄생하는 영상."
-                            data-role="담당 파트 모션그래픽 · 캐릭터 리깅 · 인포그래픽 디자인 · AI 영상/배경 소스 제작 · 사운드/색감 보정"
-                            data-contribution="3D 벽 파괴 연출과 정보형 그래픽을 통해 메시지 전달력을 높힘 효과음·색감 보정·사운드 마스터링으로 최종 완성에 기여."
-                            data-gallery="./assets/images/dangsu/8-리깅.gif||./assets/images/dangsu/7-5 벽깨기.mp4||./assets/images/dangsu/8-1 인포등장.mp4||./assets/images/dangsu/8-2 인포변경.mp4||./assets/images/dangsu/7-1.png||./assets/images/dangsu/7-2.png||./assets/images/dangsu/7-3.png||./assets/images/dangsu/7-4.png||./assets/images/dangsu/8-3 엔딩.mp4"
-                            data-gallery-stages="1|캐릭터 리깅|건강한 ‘당수’ 캐릭터의 움직임을 리깅으로 구성해 장면의 생동감 강화||1|3D 벽 파괴 연출|벽이 부서지는 전환 장면에 깊이감과 충격감을 더해 시각적 임팩트 연출||2|정보형 인포그래픽|첨가당 저감 메시지를 짧은 시간 안에 전달할 수 있도록 핵심 정보 중심으로 디자인||5|AI 영상/배경 소스 제작|AI를 활용해 담당 파트의 영상 소스와 배경, 주변 인물, 환경 요소를 제작하고 장면에 적용||0|사운드 &amp; 색감 보정|효과음, 배경음, 최종 사운드 마스터링과 색감 조정으로 영상 완성도 강화"
-                        >
-                            <button
-                                class="card-image image-slot project-open"
-                                type="button"
-                                data-image="./assets/images/project-01.png"
-                                aria-label="당수 상세 보기"
-                            >
-                                <span class="image-label">프로젝트 03 미리보기</span>
-                                <span class="thumbnail-play">▶</span>
-                            </button>
-                            <div class="card-meta">
-                                <p>기획 · 편집 · 모션</p>
-                                <span>2026</span>
-                            </div>
-                            <h3>당수</h3>
-                            <div class="card-tools" aria-label="사용 도구">
-                                <span class="card-tool-icon" title="Premiere Pro" aria-label="Premiere Pro">Pr</span>
-                                <span class="card-tool-icon" title="After Effects" aria-label="After Effects">Ae</span>
-                                <span class="card-tool-icon card-tool-image" title="ChatGPT" aria-label="ChatGPT">
-                                    <img src="./assets/icons/chatgpt-navy.png" alt="" />
-                                </span>
-                                <span class="card-tool-icon card-tool-image" title="Kling" aria-label="Kling">
-                                    <img src="./assets/icons/kling-navy.png" alt="" />
-                                </span>
-                            </div>
-                        </article>
-                        <article
-                            class="project-card reveal project-order-2"
-                            data-project
-                            data-title="의총(義塚) : 만인의 기억"
-                            data-category="역사 문화 콘텐츠 · 모션그래픽"
-                            data-work-type="팀 프로젝트"
-                            data-year="2026"
-                            data-youtube="https://youtu.be/t7d6aRckhCU?si=ytHESkfiUtE5M1bN"
-                            data-description="만인의총을 찾은 16세 소녀가 정유재란 당시 남원성 전투의 한가운데로 빨려 들어가는 역사 판타지형 추모 영상."
-                            data-role="이미지 기반 모션 그래픽 · AI 영상/이미지 소스 제작 · 3D 카메라 트랜지션 · 최종 사운드/색감/편집 보정"
-                            data-contribution="정적인 전장 이미지를 레이어 분리와 AI 영상 소스를 이용해 생동감을 강화 3D 카메라 무빙을 활용해 장면 전환과 전장 시퀀스를 구성. 최종 편집 단계에서는 효과, 사운드, 색감 보정을 통해 장면의 긴장감과 몰입감 상승에 기여."
-                            data-gallery="./assets/images/Manin Cemetery/2-1.png||./assets/images/Manin Cemetery/2-2.png||./assets/images/Manin Cemetery/2-3.png||./assets/images/Manin Cemetery/3-1.png||./assets/images/Manin Cemetery/4-1.png||./assets/images/Manin Cemetery/3-3.gif||./assets/images/Manin Cemetery/3-2 총알 매치컷.mp4"
-                            data-gallery-stages="5|AI 영상 소스 제작|담당 파트 전반에 AI 영상 소스를 제작·적용해 장면의 생동감을 강화했으며, 아래 이미지는 해당 영상 소스의 스틸 컷||1|움직임 소스 제작 · 리깅|분위기를 고조시키기 위한 움직임 소스를 제작 및 리깅하고 장면에 합성||1|3D 카메라 트랜지션|현재와 과거를 연결하는 매치컷 전환을 3D 카메라 무빙으로 연출||0|최종 편집 보정|효과, 배경음, 사운드, 색감 조정을 통해 전장 시퀀스의 몰입감 강화"
-                        >
-                            <button
-                                class="card-image image-slot project-open"
-                                type="button"
-                                data-image="./assets/images/project-02.png"
-                                aria-label="의총(義塚) : 만인의 기억 프로젝트 상세 보기"
-                            >
-                                <span class="image-label">프로젝트 02 미리보기</span>
-                                <span class="thumbnail-play">▶</span>
-                            </button>
-                            <div class="card-meta">
-                                <p>기획 · 편집 · 모션</p>
-                                <span>2026</span>
-                            </div>
-                            <h3>의총(義塚): 만인의 기억</h3>
-                            <div class="card-tools" aria-label="사용 도구">
-                                <span class="card-tool-icon" title="Premiere Pro" aria-label="Premiere Pro">Pr</span>
-                                <span class="card-tool-icon" title="After Effects" aria-label="After Effects">Ae</span>
-                                <span class="card-tool-icon" title="Photoshop" aria-label="Photoshop">Ps</span>
-                                <span class="card-tool-icon card-tool-image" title="ChatGPT" aria-label="ChatGPT">
-                                    <img src="./assets/icons/chatgpt-navy.png" alt="" />
-                                </span>
-                                <span class="card-tool-icon card-tool-image" title="Kling" aria-label="Kling">
-                                    <img src="./assets/icons/kling-navy.png" alt="" />
-                                </span>
-                            </div>
-                        </article>
-                        <article
-                            class="project-card reveal project-order-4"
-                            data-project
-                            data-title="ESG=EASY?"
-                            data-category="영화제 · 촬영"
-                            data-work-type="팀 프로젝트"
-                            data-year="2026"
-                            data-youtube=""
-                            data-description="현재 제작 중인 영화제 영상 팀 프로젝트로, 완성 후 본편과 제작 과정을 공개할 예정."
-                            data-role="메인 조명감독 · 전체 영상 컷 편집"
-                            data-contribution="촬영 현장에서 메인 조명감독 역할을 수행하고, 후반 작업에서는 전체 영상의 컷 편집을 담당."
-                        >
-                            <button
-                                class="card-image image-slot project-open"
-                                type="button"
-                                data-image="./assets/images/film-festival/thumbnail.jpg"
-                                aria-label="ESG=EASY? 프로젝트 상세 보기"
-                            >
-                                <span class="image-label">프로젝트 04 미리보기</span>
-                                <span class="thumbnail-play">▶</span>
-                            </button>
-                            <div class="card-meta">
-                                <p>조명감독 · 컷 편집</p>
-                                <span>2026</span>
-                            </div>
-                            <h3>ESG=EASY?</h3>
-                            <div class="card-tools" aria-label="사용 도구">
-                                <span class="card-tool-icon" title="Premiere Pro" aria-label="Premiere Pro">Pr</span>
-                                <span class="card-tool-icon" title="After Effects" aria-label="After Effects">Ae</span>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="slider-navigation reveal" aria-label="프로젝트 슬라이드 이동">
-                        <p class="slider-hint">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M8 7 3 12l5 5M16 7l5 5-5 5M4 12h16" />
-                            </svg>
-                            더 보기
-                        </p>
-                        <p class="slider-status" aria-live="polite">
-                            <span data-slider-current="projects">01</span>
-                            <span aria-hidden="true">/</span>
-                            <span data-slider-total="projects">05</span>
-                        </p>
-                        <div class="slider-controls">
-                            <button type="button" data-slider="projects" data-direction="-1">
-                                <svg viewBox="0 0 24 24" aria-hidden="true">
-                                    <path d="m15 5-7 7 7 7" />
-                                </svg>
-                                <span>이전</span>
-                            </button>
-                            <button type="button" data-slider="projects" data-direction="1">
-                                <span>다음</span>
-                                <svg viewBox="0 0 24 24" aria-hidden="true">
-                                    <path d="m9 5 7 7-7 7" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="contact section" id="contact">
-                <div class="shell">
-                    <div class="section-heading contact-heading reveal">
-                        <h2>영상으로 기여할<br />기회를 기다립니다.</h2>
-                    </div>
-                    <div class="contact-grid">
-                        <div class="contact-copy reveal">
-                            <p class="contact-description">
-                                기획 의도를 정확히 이해하고 끝까지 책임지는 영상 편집자·모션 디자이너입니다.<br />
-                                채용 관련 연락을 기다리고 있습니다.
-                            </p>
-                        </div>
-                        <div class="contact-links reveal">
-                            <a href="mailto:cgy0603@naver.com"><span>이메일</span>cgy0603@naver.com</a>
-                            <a href="tel:+821053526673"><span>전화</span>+82 10 5352 6673</a>
-                        </div>
-                        <a
-                            class="resume-download reveal"
-                            href="./assets/documents/resume.pdf"
-                            download="최영민_이력서.pdf"
-                            aria-label="이력서 PDF 다운로드"
-                        >
-                            <span>이력서</span>
-                            <strong>PDF 다운로드</strong>
-                            <svg class="resume-download-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                                <path d="M12 3v12m0 0 5-5m-5 5-5-5M5 20h14" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <div class="project-modal" aria-hidden="true">
-            <div class="modal-backdrop" data-modal-close></div>
-            <section class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
-                <button class="modal-close" type="button" data-modal-close aria-label="상세 팝업 닫기">×</button>
-                <div class="modal-media">
-                    <iframe
-                        title="프로젝트 영상"
-                        allow="
-                            accelerometer;
-                            autoplay;
-                            clipboard-write;
-                            encrypted-media;
-                            gyroscope;
-                            picture-in-picture;
-                            web-share;
-                        "
-                        allowfullscreen
-                    ></iframe>
-                    <img alt="" />
-                    <p class="media-placeholder">유튜브 링크 또는 상세 이미지를 연결해 주세요.</p>
-                </div>
-                <div class="modal-content">
-                    <div class="modal-heading">
-                        <span class="modal-work-type"></span>
-                        <p class="modal-meta"></p>
-                        <h2 id="modal-title"></h2>
-                    </div>
-                    <dl class="modal-details">
-                        <div>
-                            <dt>소개</dt>
-                            <dd data-modal-description></dd>
-                        </div>
-                        <div>
-                            <dt>담당 역할</dt>
-                            <dd data-modal-role></dd>
-                        </div>
-                        <div>
-                            <dt>기여 내용</dt>
-                            <dd data-modal-contribution></dd>
-                        </div>
-                    </dl>
-                    <section class="modal-gallery" aria-labelledby="modal-gallery-title" hidden>
-                        <div class="modal-gallery-heading">
-                            <p>Video Sequence</p>
-                            <h3 id="modal-gallery-title">작업 이미지 / GIF</h3>
-                        </div>
-                        <div class="modal-gallery-list"></div>
-                    </section>
-                </div>
-            </section>
+    <section class="projects section" id="projects">
+      <div class="shell">
+        <div class="section-title reveal">
+          <div><p class="section-index">02 · SELECTED PROJECTS</p><h2>결과보다 먼저,<br><em>어떤 판단을 했는지</em></h2></div>
+          <p>각 프로젝트에서 해결하고자 한 질문을 담았습니다.<br>썸네일을 누르면 영상과 작업 내용을 볼 수 있습니다.</p>
         </div>
 
-        <button class="back-to-top" type="button" aria-label="페이지 맨 위로 이동" aria-hidden="true" data-back-to-top>
-            <svg viewBox="0 0 384 512" aria-hidden="true" focusable="false">
-                <path
-                    d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.3l105.4 105.3c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
-                />
-            </svg>
-        </button>
-
-        <footer>
-            <div class="shell footer-inner">
-                <p>© 2026 최영민 개인 포트폴리오 용도로 제작된 비상업적 웹사이트입니다.</p>
+        <div class="project-list">
+          <article class="project reveal">
+            <button class="project-media project-open" type="button"
+              data-video-id="tXYugbgY8Vc"
+              data-title="Canva Motion Kit"
+              data-meta="개인 프로젝트 · 2026"
+              data-description="사용자 흐름을 UI 모션으로 설계하고, 화면 전환과 사운드를 더해 실제 서비스처럼 표현했습니다."
+              data-role="기획 · UI 디자인 · 모션 · 편집 · 사운드">
+              <img src="./assets/images/canva/project-thumbnail.jpg" alt="Canva Motion Kit 프로젝트">
+              <span>영상과 설명 보기 +</span>
+            </button>
+            <div class="project-copy">
+              <p class="project-number">PROJECT 01 · PERSONAL · 2026</p>
+              <h3>Canva Motion Kit</h3>
+              <p class="project-question">“복잡한 기능을 설명하지 않고도 이해하게 만들 수 있을까?”</p>
             </div>
-        </footer>
+          </article>
 
-        <script src="./script.js"></script>
-    </body>
+          <article class="project reverse reveal">
+            <button class="project-media project-open" type="button"
+              data-video-id="b7sJIi4cbWY"
+              data-title="식물나라"
+              data-meta="팀 프로젝트 · 2026"
+              data-description="제품의 청량한 이미지를 물의 움직임과 제형 중심의 컷 편집으로 표현했습니다."
+              data-role="조연출 · 스크립터 · DIT · 편집 · 색보정 · 사운드">
+              <img src="./assets/images/shingmulnara/thumbnail.png" alt="식물나라 브랜드 영상 프로젝트">
+              <span>영상과 설명 보기 +</span>
+            </button>
+            <div class="project-copy">
+              <p class="project-number">PROJECT 02 · TEAM · 2026</p>
+              <h3>식물나라</h3>
+              <p class="project-question">“제품의 청량함과 부드러운 사용감을 어떻게 느끼게 할까?”</p>
+            </div>
+          </article>
+
+          <article class="project reveal">
+            <button class="project-media project-open portrait" type="button"
+              data-video-id="ITI_qUxcyHM"
+              data-orientation="portrait"
+              data-title="당수"
+              data-meta="팀 프로젝트 · 2026"
+              data-description="캐릭터 모션과 정보 그래픽의 순서를 조절해 재미와 메시지가 함께 전달되도록 구성했습니다."
+              data-role="모션그래픽 · 캐릭터 리깅 · AI 소스 · 사운드 · 색감 보정">
+              <img src="./assets/images/project-01.png" alt="당수 프로젝트">
+              <span>영상과 설명 보기 +</span>
+            </button>
+            <div class="project-copy">
+              <p class="project-number">PROJECT 03 · TEAM · 2026</p>
+              <h3>당수</h3>
+              <p class="project-question">“정보와 캐릭터의 재미를 짧은 시간 안에 함께 전달하려면?”</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="process-preview section">
+      <div class="shell">
+        <p class="section-index reveal">03 · A CLOSER LOOK</p>
+        <div class="process-heading reveal">
+          <h2>한 장면을 완성하는 과정</h2>
+          <p>정적인 디자인이 분석되고, 움직임과 사운드를 만나 최종 장면이 되는 흐름입니다.</p>
+        </div>
+        <div class="process-track">
+          <figure class="reveal"><video src="./assets/images/canva/scene-analysis.mp4" muted loop autoplay playsinline></video><figcaption><span>01</span><strong>요소 분석</strong><small>화면의 구조와 정보 우선순위를 나눕니다.</small></figcaption></figure>
+          <figure class="reveal"><video src="./assets/images/canva/scene-motion-presets.mp4" muted loop autoplay playsinline></video><figcaption><span>02</span><strong>움직임 비교</strong><small>목적에 맞는 속도와 방향을 선택합니다.</small></figcaption></figure>
+          <figure class="reveal"><video src="./assets/images/canva/scene-multi-format.mp4" muted loop autoplay playsinline></video><figcaption><span>03</span><strong>장면 확장</strong><small>다양한 화면에서도 같은 인상을 유지합니다.</small></figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="workflow section" id="workflow">
+      <div class="shell">
+        <div class="section-title reveal">
+          <div><p class="section-index">04 · HOW I WORK</p><h2>저는 이렇게<br><em>일합니다</em></h2></div>
+          <p>성격을 설명하는 대신,<br>프로젝트에서 반복해 온 행동을 적었습니다.</p>
+        </div>
+        <div class="workflow-grid">
+          <article class="reveal"><span>01</span><h3>기록하고 정리합니다</h3><p>촬영 현장에서 테이크를 기록하고 촬영본을 분류해 후반 작업의 혼선을 줄였습니다.</p><small>꼼꼼함 · 체계성</small></article>
+          <article class="reveal"><span>02</span><h3>끝까지 확인합니다</h3><p>모션이나 컷 편집에서 멈추지 않고 효과음과 색감, 장면 전환까지 확인합니다.</p><small>책임감 · 완성도</small></article>
+          <article class="reveal"><span>03</span><h3>먼저 실험합니다</h3><p>리깅과 AI 소스, 3D 카메라를 테스트하고 목적에 적합한 방법을 선택합니다.</p><small>학습 태도 · 실행력</small></article>
+          <article class="reveal"><span>04</span><h3>팀의 흐름을 살핍니다</h3><p>맡은 파트뿐 아니라 다음 작업자가 편하게 이어갈 수 있는 과정도 중요하게 생각합니다.</p><small>협업 · 배려</small></article>
+        </div>
+        <aside class="profile-strip reveal">
+          <div><span>EDUCATION</span><strong>언론영상학과 졸업</strong></div>
+          <div><span>EXPERIENCE</span><strong>TBC 학과 연계 근로장학생</strong></div>
+          <div><span>TOOLS</span><strong>Premiere Pro · After Effects · Photoshop</strong></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="contact section" id="contact">
+      <div class="shell contact-inner">
+        <p class="section-index reveal">05 · CONTACT</p>
+        <h2 class="reveal">좋은 장면을 함께<br><em>고민할 기회를 기다립니다.</em></h2>
+        <p class="reveal">작업의 목적을 이해하고, 끝까지 책임지는 영상 편집자가 되겠습니다.</p>
+        <div class="contact-links reveal">
+          <a href="mailto:cgy0603@naver.com">cgy0603@naver.com ↗</a>
+          <a href="./assets/documents/resume.pdf" download>이력서 PDF ↓</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="project-modal" aria-hidden="true">
+    <div class="modal-backdrop" data-modal-close></div>
+    <section class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
+      <button class="modal-close" type="button" data-modal-close aria-label="프로젝트 상세 닫기">×</button>
+      <div class="modal-video">
+        <iframe title="프로젝트 영상" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <div class="modal-copy">
+        <p class="modal-meta"></p>
+        <h2 id="modal-title"></h2>
+        <p class="modal-description"></p>
+        <div class="modal-role"><span>담당 역할</span><p></p></div>
+      </div>
+    </section>
+  </div>
+
+  <footer>© 2026 CHOI YOUNG MIN · CONCEPT PREVIEW</footer>
+  <script src="./script.js"></script>
+</body>
 </html>
