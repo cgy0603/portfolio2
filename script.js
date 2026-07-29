@@ -448,6 +448,8 @@ function openDetailModal(item) {
     mediaWidth,
     mediaHeight,
     description,
+    motivation,
+    intention,
     role,
     contribution,
     gallery,
@@ -464,11 +466,20 @@ function openDetailModal(item) {
   modalMeta.textContent = `${category} \u00b7 ${year}`;
   modalWorkType.textContent = workType;
   modalWorkType.hidden = !workType;
-  renderModalDetails([
-    { term: "\uc18c\uac1c", value: description },
-    { term: "\ub2f4\ub2f9 \uc5ed\ud560", value: role },
-    { term: "\uae30\uc5ec \ub0b4\uc6a9", value: contribution },
-  ]);
+  const isPersonalWork = workType === "\uac1c\uc778 \uc791\uc5c5";
+  renderModalDetails(
+    isPersonalWork
+      ? [
+          { term: "\uc18c\uac1c", value: description },
+          { term: "\uc81c\uc791 \ub3d9\uae30", value: motivation },
+          { term: "\uc81c\uc791 \uc758\ub3c4", value: intention },
+        ]
+      : [
+          { term: "\uc18c\uac1c", value: description },
+          { term: "\ub2f4\ub2f9 \uc5ed\ud560", value: role },
+          { term: "\uae30\uc5ec \ub0b4\uc6a9", value: contribution },
+        ]
+  );
   renderModalGallery(parseGalleryItems(gallery), title, parseGalleryStages(galleryStages));
 
   modalEmbed.removeAttribute("src");
