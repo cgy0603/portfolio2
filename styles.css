@@ -391,7 +391,7 @@ p {
     width: min(100%, 620px);
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0;
+    column-gap: 10px;
     margin: 72px 0 0;
     border-top: 1px solid rgba(255, 255, 255, 0.24);
 }
@@ -534,15 +534,16 @@ p {
 
 .hero-ribbon {
     position: absolute;
+    z-index: 4;
     top: 42px;
-    right: 26px;
+    right: 28px;
     margin: 0;
-    color: rgba(255, 255, 255, 0.62);
+    color: rgba(255, 255, 255, 0.68);
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    writing-mode: vertical-rl;
+    white-space: nowrap;
 }
 
 .projects {
