@@ -42,28 +42,82 @@ const modalTitle = modal.querySelector("#modal-title");
 const modalMeta = modal.querySelector(".modal-meta");
 const modalDescription = modal.querySelector(".modal-description");
 const modalRole = modal.querySelector(".modal-role p");
+const modalDetails = modal.querySelectorAll(".modal-details");
+const modalDetailVideos = modal.querySelectorAll(".modal-detail-video");
+const pageRegions = [
+  document.querySelector(".site-header"),
+  document.querySelector("main"),
+  document.querySelector("footer"),
+].filter(Boolean);
 let lastFocusedElement = null;
 
+function getModalFocusableElements() {
+  return [...dialog.querySelectorAll(
+    'a[href], button:not([disabled]), iframe, [tabindex]:not([tabindex="-1"])'
+  )].filter((element) => {
+    const hiddenPanel = element.closest("[hidden]");
+    return !hiddenPanel && element.getClientRects().length > 0;
+  });
+}
+
+modal.querySelectorAll(".modal-comparison").forEach((comparison) => {
+  const videos = [...comparison.querySelectorAll("video")];
+  videos.forEach((video) => {
+    video.addEventListener("ended", () => {
+      if (!modal.classList.contains("open")) return;
+      videos.forEach((item) => {
+        item.currentTime = 0;
+        item.play().catch(() => {});
+      });
+    });
+  });
+});
+
 function openProjectModal(button) {
-  const { videoId, orientation, title, meta, description, role } = button.dataset;
+  const { videoId, orientation, title, meta, description, role, details } = button.dataset;
   lastFocusedElement = button;
   dialog.dataset.orientation = orientation || "landscape";
-  modalFrame.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}?rel=0`;
+  dialog.classList.toggle("has-details", Boolean(details));
+  modalFrame.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}?rel=0&playsinline=1&hl=ko`;
   modalFrame.title = `${title} 프로젝트 영상`;
   modalTitle.textContent = title;
   modalMeta.textContent = meta;
   modalDescription.textContent = description;
+  modalDescription.hidden = !description;
   modalRole.textContent = role;
+  modalDetails.forEach((panel) => {
+    panel.hidden = panel.dataset.projectDetails !== details;
+  });
+  modalDetailVideos.forEach((video) => {
+    const panel = video.closest(".modal-details");
+    if (panel && !panel.hidden) {
+      video.currentTime = 0;
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+  });
   modal.classList.add("open");
   modal.setAttribute("aria-hidden", "false");
+  pageRegions.forEach((region) => {
+    region.inert = true;
+  });
   document.body.style.overflow = "hidden";
-  dialog.focus();
+  dialog.scrollTop = 0;
+  modalTitle.focus({ preventScroll: true });
 }
 
 function closeProjectModal() {
   modal.classList.remove("open");
   modal.setAttribute("aria-hidden", "true");
+  pageRegions.forEach((region) => {
+    region.inert = false;
+  });
   modalFrame.removeAttribute("src");
+  modalDetailVideos.forEach((video) => {
+    video.pause();
+    video.currentTime = 0;
+  });
   document.body.style.overflow = "";
   lastFocusedElement?.focus();
 }
@@ -77,7 +131,36 @@ modal.querySelectorAll("[data-modal-close]").forEach((element) => {
 });
 
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && modal.classList.contains("open")) {
+  if (!modal.classList.contains("open")) return;
+
+  if (event.key === "Escape") {
     closeProjectModal();
+    return;
+  }
+
+  if (event.key === "Tab") {
+    const focusableElements = getModalFocusableElements();
+    if (!focusableElements.length) {
+      event.preventDefault();
+      modalTitle.focus();
+      return;
+    }
+
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    if (document.activeElement === modalTitle) {
+      event.preventDefault();
+      (event.shiftKey ? lastElement : firstElement).focus();
+    } else if (event.shiftKey && document.activeElement === firstElement) {
+      event.preventDefault();
+      lastElement.focus();
+    } else if (!event.shiftKey && document.activeElement === lastElement) {
+      event.preventDefault();
+      firstElement.focus();
+    } else if (!dialog.contains(document.activeElement)) {
+      event.preventDefault();
+      firstElement.focus();
+    }
   }
 });
