@@ -63,9 +63,9 @@
 
     --white: #fff;
     --line: rgba(37, 40, 45, 0.16);
-    --sans: "A2z", sans-serif;
-    --serif: "A2z", sans-serif;
-    --display: "A2z", sans-serif;
+    --sans: "Montserrat", "A2z", sans-serif;
+    --serif: "Montserrat", "A2z", sans-serif;
+    --display: "Montserrat", "A2z", sans-serif;
 }
 * {
     box-sizing: border-box;
@@ -80,7 +80,7 @@ body {
     background: var(--paper);
     font-family: var(--sans);
     font-size: 16px;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.01em;
 }
 a {
     color: inherit;
@@ -175,10 +175,12 @@ section[id] {
     line-height: 1;
 }
 .brand-wordmark strong {
+    font-weight: 700;
     letter-spacing: 0.03em;
 }
 .brand-wordmark small {
     font-size: 16px;
+    font-weight: 500;
     opacity: 0.68;
     letter-spacing: 0.03em;
 }
@@ -225,7 +227,7 @@ nav a {
 .eyebrow,
 .section-index {
     margin: 0 0 28px;
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: 0.03em;
 }
 .hero h1,
@@ -341,7 +343,7 @@ em {
 }
 .principle-card span,
 .project-number {
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: 0.03em;
 }
 .principle-card span {
@@ -482,7 +484,7 @@ em {
     margin: 0;
     font-family: var(--serif);
     font-size: clamp(38px, 4vw, 58px);
-    font-weight: 500;
+    font-weight: 600;
 }
 .project-question {
     margin: 32px 0 20px;
@@ -550,6 +552,7 @@ em {
 }
 .process-track strong {
     font-size: 20px;
+    font-weight: 700;
     color: var(--accent-light);
 }
 .process-track small {
@@ -622,7 +625,7 @@ em {
     display: block;
     margin-bottom: 12px;
     color: var(--muted);
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: 0.03em;
 }
 .contact {
@@ -806,7 +809,7 @@ em {
     margin: 0 0 14px;
     color: var(--muted);
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: 0.03em;
 }
 .modal-copy h2 {
@@ -942,7 +945,7 @@ em {
     margin: 0 0 10px;
     color: var(--accent);
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 600;
 }
 .modal-details h3 {
     margin: 0 0 27px;
@@ -1031,6 +1034,7 @@ footer {
     color: #a9c3df;
     background: #071c36;
     text-align: center;
+    font-weight: 500;
     letter-spacing: 0.03em;
 }
 .reveal {
